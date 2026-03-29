@@ -210,13 +210,13 @@
     </div>
         <div class="card">
       <span class="card-number">1</span>
-      <span class="card-title">Mistral AI开源高性能TTS模型，声称性能超越ElevenLabs</span>
-      <div class="card-key-point">Mistral发布免费开源TTS模型，挑战语音AI头部厂商。</div>
+      <span class="card-title">Mistral AI开源高性能TTS模型，声称超越ElevenLabs</span>
+      <div class="card-key-point">Mistral发布免费开源TTS模型，性能宣称优于ElevenLabs。</div>
       <div class="insights-label">核心观点</div>
       <ul class="insights">
-        <li>开源策略加速语音AI生态竞争与迭代</li>
-<li>企业可低成本集成高质量定制语音能力</li>
-<li>提示行业从‘黑盒API’转向可控、可审计的语音栈</li>
+        <li>开源策略加速语音AI平民化与可审计性</li>
+<li>企业级语音合成正从黑盒API转向可控模型栈</li>
+<li>TTS竞争焦点从音质转向推理效率与定制成本</li>
       </ul>
       <div class="card-source">
         来源：VentureBeat AI
@@ -226,13 +226,13 @@
     </div>
     <div class="card">
       <span class="card-number">2</span>
-      <span class="card-title">斯坦福研究证实：向AI寻求个人建议存在显著心理危害风险</span>
-      <div class="card-key-point">AI聊天机器人因‘讨好倾向’可能强化用户非理性决策。</div>
+      <span class="card-title">斯坦福研究证实：向AI寻求个人建议存在显著心理风险</span>
+      <div class="card-key-point">AI聊天机器人因‘讨好倾向’可能加剧用户认知偏差。</div>
       <div class="insights-label">核心观点</div>
       <ul class="insights">
-        <li>sycophancy不仅是技术缺陷，更是临床级风险源</li>
-<li>需建立AI心理健康影响评估强制标准</li>
-<li>个人咨询类AI应用亟待引入第三方伦理审计</li>
+        <li>sycophancy不是UI问题，而是训练目标的结构性缺陷</li>
+<li>高信任度场景需强制引入反事实验证与不确定性提示</li>
+<li>监管应聚焦‘建议类AI’而非通用聊天界面</li>
       </ul>
       <div class="card-source">
         来源：TechCrunch AI
@@ -242,13 +242,13 @@
     </div>
     <div class="card">
       <span class="card-number">3</span>
-      <span class="card-title">NeurIPS政策风波凸显AI科研正深度卷入地缘政治博弈</span>
-      <div class="card-key-point">顶级AI会议临时撤销涉华限制政策，反映科研全球化裂痕加剧。</div>
+      <span class="card-title">NeurIPS地缘政策风波：AI顶级会议被迫撤回中国限制条款</span>
+      <div class="card-key-point">NeurIPS因限制中国学者参与引发强烈反弹后紧急逆转政策。</div>
       <div class="insights-label">核心观点</div>
       <ul class="insights">
-        <li>基础研究已难脱离国家技术主权框架</li>
-<li>中国AI人才外流压力与国际协作信任双下降</li>
-<li>未来顶会或将出现‘平行审稿体系’雏形</li>
+        <li>全球AI科研协作正面临制度性脱钩压力</li>
+<li>学术中立性在技术主权博弈中持续失守</li>
+<li>一线研究者用集体抵制捍卫开放科学底线</li>
       </ul>
       <div class="card-source">
         来源：Wired AI
@@ -266,14 +266,14 @@
     </div>
         <div class="card">
       <span class="card-number green">1</span>
-      <span class="card-title">IndexCache（稀疏注意力优化器）</span>
+      <span class="card-title">IndexCache稀疏注意力优化器</span>
       <div class="kv-row" style="margin-top:10px">
         <span class="kv-label">为何重要</span>
-        <span class="kv-value">将长上下文推理冗余计算削减75%，突破LLM实时处理20万token瓶颈。</span>
+        <span class="kv-value">将20万token长文本推理速度提升1.82倍，大幅降低大模型落地成本。</span>
       </div>
       <div class="kv-row">
         <span class="kv-label">学习路径</span>
-        <span class="kv-value">先掌握稀疏注意力原理→复现Tsinghua论文实验→对比FlashAttention-3性能差异</span>
+        <span class="kv-value">先掌握Sparse Attention原理，再研读Tsinghua/Z.ai论文，复现KV缓存剪枝逻辑。</span>
       </div>
       <div class="card-source">
         来源：VentureBeat AI
@@ -283,14 +283,14 @@
     </div>
     <div class="card">
       <span class="card-number green">2</span>
-      <span class="card-title">TurboQuant（内存量化算法）</span>
+      <span class="card-title">TurboQuant内存量化算法</span>
       <div class="kv-row" style="margin-top:10px">
         <span class="kv-label">为何重要</span>
-        <span class="kv-value">解决KV缓存瓶颈，实现AI内存访问提速8倍、成本降50%+。</span>
+        <span class="kv-value">解决LLM推理中的KV缓存瓶颈，实现8倍内存加速与50%+成本削减。</span>
       </div>
       <div class="kv-row">
         <span class="kv-label">学习路径</span>
-        <span class="kv-value">理解KV缓存硬件约束→研读Google系统级量化设计→在Llama-3-70B上实测吞吐提升</span>
+        <span class="kv-value">理解Key-Value Cache机制→学习INT4/FP4量化权衡→实践Google开源实现。</span>
       </div>
       <div class="card-source">
         来源：VentureBeat AI
@@ -300,14 +300,14 @@
     </div>
     <div class="card">
       <span class="card-number green">3</span>
-      <span class="card-title">EVA（语音智能体评估框架）</span>
+      <span class="card-title">EVA语音智能体评估框架</span>
       <div class="kv-row" style="margin-top:10px">
         <span class="kv-label">为何重要</span>
-        <span class="kv-value">首个面向多轮对话、声学鲁棒性与任务完成率的端到端语音Agent评测标准。</span>
+        <span class="kv-value">首个面向多轮语音交互、任务完成率与鲁棒性统一评测的标准框架。</span>
       </div>
       <div class="kv-row">
         <span class="kv-label">学习路径</span>
-        <span class="kv-value">学习ServiceNow EVA基准构成→用Whisper+VAD构建测试pipeline→参与Hugging Face开源评测竞赛</span>
+        <span class="kv-value">对比传统ASR/WER指标→学习EVA多维评分矩阵→在Hugging Face上试跑基准测试。</span>
       </div>
       <div class="card-source">
         来源：Hugging Face Blog
@@ -328,11 +328,11 @@
       <span class="card-title">Fin Apex 1.0</span>
       <div class="kv-row" style="margin-top:10px">
         <span class="kv-label">更新内容</span>
-        <span class="kv-value">Intercom自研轻量级客服专用模型，实测超越GPT-5.4与Claude Sonnet 4.6</span>
+        <span class="kv-value">Intercom自研轻量客服专用模型，实测超越GPT-5.4与Claude Sonnet 4.6。</span>
       </div>
       <div class="kv-row">
         <span class="kv-label">适用人群</span>
-        <span class="kv-value">企业级客户服务平台开发者</span>
+        <span class="kv-value">SaaS客服平台、垂直行业服务机器人开发者</span>
       </div>
       <div class="card-source">
         <a href="https://venturebeat.com/technology/intercoms-new-post-trained-fin-apex-1-0-beats-gpt-5-4-and-claude-sonnet-4-6" target="_blank" rel="noopener">官方链接 →</a>
@@ -340,14 +340,14 @@
     </div>
     <div class="card">
       <span class="card-number orange">2</span>
-      <span class="card-title">Attie</span>
+      <span class="card-title">Attie（Bluesky）</span>
       <div class="kv-row" style="margin-top:10px">
         <span class="kv-label">更新内容</span>
-        <span class="kv-value">Bluesky推出AI驱动的个性化信息流构建App，基于atproto协议开放定制</span>
+        <span class="kv-value">基于atproto协议的AI驱动个性化信息流构建App，支持语义订阅与兴趣图谱生成。</span>
       </div>
       <div class="kv-row">
         <span class="kv-label">适用人群</span>
-        <span class="kv-value">去中心化社交平台内容策展人与开发者</span>
+        <span class="kv-value">去中心化社交开发者、内容策展人、信息过滤需求者</span>
       </div>
       <div class="card-source">
         <a href="https://techcrunch.com/2026/03/28/bluesky-leans-into-ai-with-attie-an-app-for-building-custom-feeds/" target="_blank" rel="noopener">官方链接 →</a>
@@ -355,14 +355,14 @@
     </div>
     <div class="card">
       <span class="card-number orange">3</span>
-      <span class="card-title">Axplorer</span>
+      <span class="card-title">Axplorer数学模式发现工具</span>
       <div class="kv-row" style="margin-top:10px">
         <span class="kv-label">更新内容</span>
-        <span class="kv-value">Axiom Math发布数学模式发现AI工具，专为辅助定理证明与猜想生成设计</span>
+        <span class="kv-value">Axiom Math推出的免费AI工具，专为数学家设计，可自动识别潜在定理与结构规律。</span>
       </div>
       <div class="kv-row">
         <span class="kv-label">适用人群</span>
-        <span class="kv-value">数学研究者与理论计算机科学家</span>
+        <span class="kv-value">数学研究者、理论物理学者、STEM教育工作者</span>
       </div>
       <div class="card-source">
         <a href="https://www.technologyreview.com/2026/03/25/1134642/this-startup-wants-to-change-how-mathematicians-do-math/" target="_blank" rel="noopener">官方链接 →</a>
