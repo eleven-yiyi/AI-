@@ -406,6 +406,16 @@ HTML_TEMPLATE = """\
     font-size:.72rem; padding:3px 10px; border-radius:20px; font-weight:500;
   }}
 
+  /* ── 板块胶囊标签 ── */
+  .sec-badge {{
+    display: inline-block; font-size: .62rem; font-weight: 800;
+    letter-spacing: .1em; padding: 2px 7px; border-radius: 4px;
+    color: #fff; vertical-align: middle; margin-right: 6px;
+  }}
+  .nb-news      {{ background: var(--indigo); }}
+  .nb-knowledge {{ background: var(--green); }}
+  .nb-tools     {{ background: var(--orange); }}
+
   /* ── 快速导航 ── */
   .toc {{
     display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;
@@ -529,9 +539,9 @@ HTML_TEMPLATE = """\
 
 <!-- 顶部导航 -->
 <nav class="topnav">
-  <span class="topnav-logo">⚡ 每日 AI 简报</span>
+  <span class="topnav-logo">每日 AI 简报</span>
   <div class="topnav-links">
-    <a href="history.html">📚 历史</a>
+    <a href="history.html">历史存档</a>
   </div>
 </nav>
 
@@ -543,41 +553,42 @@ HTML_TEMPLATE = """\
     <h1>每日 AI 简报</h1>
     <div class="hero-date">{date}</div>
     <div class="hero-tags">
-      <span class="hero-tag">📡 8 个精选信源</span>
-      <span class="hero-tag">🔍 三层关键词过滤</span>
-      <span class="hero-tag">🤖 AI 自动生成</span>
+      <span class="hero-tag">8 个精选信源</span>
+      <span class="hero-tag">三层关键词过滤</span>
+      <span class="hero-tag">AI 自动生成</span>
     </div>
   </div>
 
   <!-- 快速跳转 -->
   <div class="toc">
-    <a href="#news">📰 AI 新闻</a>
-    <a href="#knowledge">🧠 AI 知识</a>
-    <a href="#tools">🛠 工具更新</a>
+    <a href="#news"><span class="sec-badge nb-news">NEWS</span>看·风向</a>
+    <a href="#knowledge"><span class="sec-badge nb-knowledge">EDU</span>获·新知</a>
+    <a href="#tools"><span class="sec-badge nb-tools">TOOL</span>试·利器</a>
   </div>
 
-  <!-- 板块一：AI 新闻 -->
+  <!-- 板块一：看·风向 -->
   <div id="news" class="section section-news">
     <div class="section-header">
-      <span>📰</span> 板块一：AI 新闻
-      <span class="section-count">3 条</span>
+      <span class="sec-badge nb-news">NEWS</span> 看·风向
+      <span class="section-count">{news_count} 条</span>
     </div>
     {news_html}
   </div>
 
-  <!-- 板块二：AI 知识 -->
+  <!-- 板块二：获·新知 -->
   <div id="knowledge" class="section section-knowledge">
     <div class="section-header">
-      <span>🧠</span> 板块二：AI 知识
+      <span class="sec-badge nb-knowledge">EDU</span> 获·新知
+      <span class="section-count">{knowledge_count} 条</span>
     </div>
     {knowledge_html}
   </div>
 
-  <!-- 板块三：AI 工具更新 -->
+  <!-- 板块三：试·利器 -->
   <div id="tools" class="section section-tools">
     <div class="section-header">
-      <span>🛠️</span> 板块三：AI 工具更新
-      <span class="section-count">3 条</span>
+      <span class="sec-badge nb-tools">TOOL</span> 试·利器
+      <span class="section-count">{tools_count} 条</span>
     </div>
     {tools_html}
   </div>
@@ -823,6 +834,16 @@ INDEX_TEMPLATE = """\
     font-size: .9rem; display: none;
   }}
 
+  /* ── 月份分组标题 ── */
+  .month-group {{ margin-bottom: 6px; margin-top: 24px; }}
+  .month-group:first-child {{ margin-top: 0; }}
+  .month-label {{
+    font-size: .78rem; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: .08em;
+    padding: 4px 0 8px; border-bottom: 1px solid var(--border);
+    margin-bottom: 10px;
+  }}
+
   /* ── 条目 ── */
   .entry {{
     background: var(--card);
@@ -894,10 +915,10 @@ INDEX_TEMPLATE = """\
 
 <!-- 顶部导航 -->
 <nav class="topnav">
-  <span class="topnav-logo">⚡ 每日 AI 简报</span>
+  <span class="topnav-logo">每日 AI 简报</span>
   <div class="topnav-links">
-    <a href="index.html">📰 最新</a>
-    <a href="history.html" class="active">📚 历史</a>
+    <a href="index.html">最新一期</a>
+    <a href="history.html" class="active">历史存档</a>
   </div>
 </nav>
 
@@ -965,18 +986,33 @@ INDEX_TEMPLATE = """\
 
 def render_index(history: list[dict]) -> str:
     total = len(history)
-    latest = history[0]["date"] if history else "—"
     total_articles = sum(
         h.get("news_count", 0) + h.get("knowledge_count", 0) + h.get("tools_count", 0)
         for h in history
     )
+
+    # 按 slug（YYYY-MM-DD）提取年月，分组
+    from itertools import groupby
+    def month_key(h: dict) -> str:
+        slug = h.get("slug", "")
+        return slug[:7]  # "YYYY-MM"
+
+    def month_label(ym: str) -> str:
+        try:
+            y, m = ym.split("-")
+            return f"{y}年{int(m)}月"
+        except Exception:
+            return ym
+
     parts = []
-    for h in history:
-        headlines_html = "\n".join(
-            f'      <li>{_esc(hl)}</li>' for hl in h.get("headlines", []) if hl
-        )
-        total_items = h.get('news_count',0) + h.get('knowledge_count',0) + h.get('tools_count',0)
-        parts.append(f"""\
+    for ym, group in groupby(history, key=month_key):
+        entries = []
+        for h in group:
+            headlines_html = "\n".join(
+                f'        <li>{_esc(hl)}</li>' for hl in h.get("headlines", []) if hl
+            )
+            total_items = h.get('news_count', 0) + h.get('knowledge_count', 0) + h.get('tools_count', 0)
+            entries.append(f"""\
   <a class="entry" href="{h['filename']}">
     <div class="entry-top">
       <span class="entry-date">📅 {_esc(h['date'])}</span>
@@ -987,6 +1023,11 @@ def render_index(history: list[dict]) -> str:
 {headlines_html}
     </ul>
   </a>""")
+        parts.append(f"""\
+<div class="month-group">
+  <div class="month-label">{month_label(ym)}</div>
+{"".join(entries)}
+</div>""")
 
     return INDEX_TEMPLATE.format(
         total=total,
@@ -997,11 +1038,17 @@ def render_index(history: list[dict]) -> str:
 
 def render_html(brief: dict) -> str:
     date_str = brief.get("date", datetime.now().strftime("%Y年%m月%d日"))
+    news      = brief.get("news", [])[:6]
+    knowledge = brief.get("knowledge", [])[:6]
+    tools     = brief.get("tools", [])[:6]
     return HTML_TEMPLATE.format(
         date=date_str,
-        news_html=render_news(brief.get("news", [])[:6]),
-        knowledge_html=render_knowledge(brief.get("knowledge", [])[:6]),
-        tools_html=render_tools(brief.get("tools", [])[:6]),
+        news_html=render_news(news),
+        knowledge_html=render_knowledge(knowledge),
+        tools_html=render_tools(tools),
+        news_count=len(news),
+        knowledge_count=len(knowledge),
+        tools_count=len(tools),
     )
 
 
@@ -1064,7 +1111,8 @@ def main():
     output_dir = Path(__file__).parent / "docs"
     output_dir.mkdir(exist_ok=True)
 
-    date_slug = datetime.now().strftime("%Y-%m-%d")
+    date_slug = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    brief["date"] = datetime.now(timezone.utc).strftime("%Y年%m月%d日")
     output_path = output_dir / f"ribao_{date_slug}.html"
     html_content = render_html(brief)
     output_path.write_text(html_content, encoding="utf-8")
@@ -1099,8 +1147,8 @@ def push_to_wechat(brief: dict, send_key: str) -> None:
 
     lines = []
 
-    # 板块一：AI 新闻
-    lines.append("## 📰 AI 新闻")
+    # 板块一：看·风向
+    lines.append("## 📰 看·风向")
     for item in brief.get("news", []):
         lines.append(f"**{item.get('title', '')}**")
         lines.append(f"> {item.get('key_point', '')}")
@@ -1109,8 +1157,8 @@ def push_to_wechat(brief: dict, send_key: str) -> None:
         lines.append(f"[原文链接]({item.get('source_url', '#')})")
         lines.append("")
 
-    # 板块二：AI 知识
-    lines.append("## 🧠 AI 知识")
+    # 板块二：获·新知
+    lines.append("## 🧠 获·新知")
     for item in brief.get("knowledge", []):
         lines.append(f"**{item.get('concept', '')}**")
         lines.append(f"为何重要：{item.get('why_important', '')}")
@@ -1118,8 +1166,8 @@ def push_to_wechat(brief: dict, send_key: str) -> None:
         lines.append(f"[原文链接]({item.get('source_url', '#')})")
         lines.append("")
 
-    # 板块三：AI 工具
-    lines.append("## 🛠️ AI 工具更新")
+    # 板块三：试·利器
+    lines.append("## 🛠️ 试·利器")
     for item in brief.get("tools", []):
         lines.append(f"**{item.get('tool_name', '')}**")
         lines.append(f"{item.get('update', '')}")
