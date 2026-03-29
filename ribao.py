@@ -663,7 +663,24 @@ def update_index(output_dir: Path, brief: dict, date_slug: str) -> None:
     history.sort(key=lambda x: x.get("slug", ""), reverse=True)
 
     history_file.write_text(json.dumps(history, ensure_ascii=False, indent=2), encoding="utf-8")
-    (output_dir / "index.html").write_text(render_index(history), encoding="utf-8")
+    # history.html = 历史列表；index.html = 最新简报（根域名直接可达）
+    (output_dir / "history.html").write_text(render_index(history), encoding="utf-8")
+    latest_html = (output_dir / f"ribao_{date_slug}.html").read_text(encoding="utf-8")
+    (output_dir / "index.html").write_text(
+        latest_html.replace(
+            "</title>",
+            "</title>\n<base href=\"./\">",
+            1,
+        ).replace(
+            "<div class=\"header\">",
+            "<div style=\"text-align:center;padding:8px;background:#4f46e5\">"
+            "<a href=\"history.html\" style=\"color:#fff;font-size:0.85rem;"
+            "text-decoration:none;opacity:0.9\">📚 查看历史记录 →</a></div>"
+            "<div class=\"header\">",
+            1,
+        ),
+        encoding="utf-8",
+    )
     print(f"  ✅ 历史索引已更新（共 {len(history)} 期）")
 
 
@@ -775,7 +792,10 @@ INDEX_TEMPLATE = """\
 </head>
 <body>
 <div class="container">
-  <div class="header">
+  <div style="text-align:center;padding:8px;background:#4f46e5;border-radius:12px 12px 0 0;margin-bottom:-4px">
+    <a href="index.html" style="color:#fff;font-size:0.85rem;text-decoration:none;opacity:0.9">← 返回最新简报</a>
+  </div>
+  <div class="header" style="border-radius:0 0 16px 16px">
     <div class="sub">DAILY AI BRIEF · HISTORY</div>
     <h1>每日 AI 简报</h1>
     <div class="sub" style="margin-top:8px">历史记录存档</div>
