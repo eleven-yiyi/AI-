@@ -2,3 +2,5 @@ anthropic
 feedparser
 requests
 python-dateutil
+openai
+
