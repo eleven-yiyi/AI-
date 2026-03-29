@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日 AI 简报 · 历史记录</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f0f2f5;
+    color: #1a1a2e;
+    line-height: 1.7;
+    padding: 20px 12px 48px;
+  }
+  a { color: inherit; text-decoration: none; }
+  .container { max-width: 680px; margin: 0 auto; }
+
+  .header {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    border-radius: 16px;
+    padding: 32px 28px;
+    text-align: center;
+    margin-bottom: 28px;
+    color: #fff;
+  }
+  .header h1 { font-size: 1.6rem; font-weight: 700; }
+  .header .sub { margin-top: 6px; font-size: 0.88rem; opacity: 0.8; }
+
+  .stats {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .stat-card {
+    flex: 1;
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+  .stat-num { font-size: 1.8rem; font-weight: 700; color: #4f46e5; }
+  .stat-label { font-size: 0.78rem; color: #888; margin-top: 2px; }
+
+  .entry {
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    display: block;
+    transition: box-shadow .15s, transform .15s;
+    border-left: 4px solid #4f46e5;
+  }
+  .entry:hover {
+    box-shadow: 0 4px 20px rgba(79,70,229,.12);
+    transform: translateY(-1px);
+  }
+  .entry-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .entry-date { font-size: 1rem; font-weight: 700; color: #111; }
+  .entry-badges { display: flex; gap: 6px; }
+  .badge {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+  .badge-news      { background: #eef2ff; color: #4f46e5; }
+  .badge-knowledge { background: #f0fdf4; color: #16a34a; }
+  .badge-tools     { background: #fff7ed; color: #ea580c; }
+  .entry-headlines { list-style: none; }
+  .entry-headlines li {
+    font-size: 0.85rem;
+    color: #555;
+    padding: 2px 0 2px 14px;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .entry-headlines li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: #a5b4fc;
+    font-size: 0.7rem;
+    top: 4px;
+  }
+  .footer {
+    text-align: center;
+    font-size: 0.78rem;
+    color: #aaa;
+    margin-top: 32px;
+  }
+  @media (max-width: 480px) {
+    .stats { flex-direction: column; }
+    .header { padding: 22px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="sub">DAILY AI BRIEF · HISTORY</div>
+    <h1>每日 AI 简报</h1>
+    <div class="sub" style="margin-top:8px">历史记录存档</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-num">1</div>
+      <div class="stat-label">累计期数</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">2026年03月29日</div>
+      <div class="stat-label">最新一期</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">9</div>
+      <div class="stat-label">累计文章</div>
+    </div>
+  </div>
+
+    <a class="entry" href="ribao_2026-03-29.html">
+    <div class="entry-top">
+      <span class="entry-date">📅 2026年03月29日</span>
+      <span class="entry-badges">
+        <span class="badge badge-news">📰 3</span>
+        <span class="badge badge-knowledge">🧠 3</span>
+        <span class="badge badge-tools">🛠 3</span>
+      </span>
+    </div>
+    <ul class="entry-headlines"><li>Mistral AI开源高性能TTS模型，声称性能超越ElevenLabs</li>
+<li>斯坦福研究证实：向AI寻求个人建议存在显著心理危害风险</li>
+<li>NeurIPS政策风波凸显AI科研正深度卷入地缘政治博弈</li></ul>
+  </a>
+
+  <div class="footer">由 AI 自动生成 · GitHub Actions 每日驱动</div>
+</div>
+</body>
+</html>
