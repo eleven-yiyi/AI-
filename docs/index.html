@@ -4,220 +4,246 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>每日 AI 简报 · 2026年03月29日</title>
-<base href="./">
 <style>
-  /* ── Reset & Base ── */
+  :root {
+    --indigo: #4f46e5; --indigo-dark: #3730a3; --indigo-light: #eef2ff;
+    --green: #16a34a;  --green-light: #f0fdf4;
+    --orange: #ea580c; --orange-light: #fff7ed;
+    --bg: #f4f5f9; --card: #ffffff; --text: #111827; --muted: #6b7280;
+    --border: #e5e7eb; --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f0f13; --card: #1a1a24; --text: #e5e7eb; --muted: #9ca3af;
+      --border: #2d2d3d; --indigo-light: #1e1b4b; --green-light: #052e16;
+      --orange-light: #1c0a00; --indigo-dark: #a5b4fc;
+    }
+  }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
                  "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    background: #f0f2f5;
-    color: #1a1a2e;
-    line-height: 1.7;
-    padding: 20px 12px 48px;
+    background: var(--bg); color: var(--text);
+    line-height: 1.75; padding-bottom: 80px;
   }
-  a { color: #4f46e5; text-decoration: none; }
+  a { color: var(--indigo); text-decoration: none; }
   a:hover { text-decoration: underline; }
 
+  /* ── 顶部导航 ── */
+  .topnav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(79,70,229,.95);
+    backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.15);
+  }
+  .topnav-logo { color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing:.03em; }
+  .topnav-links { display: flex; gap: 6px; }
+  .topnav-links a {
+    color: rgba(255,255,255,.85); font-size: 0.8rem; font-weight: 500;
+    padding: 4px 12px; border-radius: 20px;
+    transition: background .15s;
+  }
+  .topnav-links a:hover { background: rgba(255,255,255,.15); text-decoration: none; }
+  .topnav-links .active { background: rgba(255,255,255,.2); color:#fff; }
+
+  /* ── 进度条 ── */
+  #progress { position:fixed; top:0; left:0; height:3px;
+               background: linear-gradient(90deg,#818cf8,#a78bfa);
+               width:0%; z-index:200; transition:width .1s; }
+
   /* ── Container ── */
-  .container {
-    max-width: 680px;
-    margin: 0 auto;
+  .container { max-width: 700px; margin: 0 auto; padding: 24px 16px; }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 60%, #a855f7 100%);
+    border-radius: var(--radius); padding: 36px 28px; text-align: center;
+    color: #fff; margin-bottom: 28px;
+    box-shadow: 0 8px 32px rgba(79,70,229,.25);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-label { font-size: .75rem; font-weight:600; letter-spacing:.12em;
+                 opacity:.75; text-transform:uppercase; margin-bottom:8px; }
+  .hero h1 { font-size: 1.75rem; font-weight: 800; letter-spacing:.02em; }
+  .hero-date { margin-top:10px; font-size:.85rem; opacity:.8; }
+  .hero-tags { margin-top:14px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+  .hero-tag {
+    background: rgba(255,255,255,.15); color:#fff;
+    font-size:.72rem; padding:3px 10px; border-radius:20px; font-weight:500;
   }
 
-  /* ── Header ── */
-  .header {
-    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-    border-radius: 16px;
-    padding: 32px 28px;
-    text-align: center;
-    margin-bottom: 24px;
-    color: #fff;
+  /* ── 快速导航 ── */
+  .toc {
+    display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;
   }
-  .header h1 {
-    font-size: 1.6rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
+  .toc a {
+    flex: 1; min-width: 100px;
+    display: flex; align-items: center; gap: 6px; justify-content: center;
+    background: var(--card); border: 1px solid var(--border);
+    color: var(--text); font-size: .82rem; font-weight: 600;
+    padding: 10px 12px; border-radius: 10px;
+    transition: all .15s;
   }
-  .header .subtitle {
-    margin-top: 6px;
-    font-size: 0.88rem;
-    opacity: 0.85;
-    letter-spacing: 0.02em;
-  }
-  .header .meta {
-    margin-top: 12px;
-    font-size: 0.78rem;
-    opacity: 0.7;
-  }
+  .toc a:hover { text-decoration:none; border-color: var(--indigo);
+                  box-shadow: 0 0 0 3px rgba(79,70,229,.1); }
 
   /* ── Section ── */
-  .section {
-    margin-bottom: 20px;
-  }
+  .section { margin-bottom: 24px; }
   .section-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 14px 18px;
-    border-radius: 12px 12px 0 0;
-    font-weight: 700;
-    font-size: 0.95rem;
-    letter-spacing: 0.03em;
+    display: flex; align-items: center; gap: 10px;
+    padding: 13px 18px; border-radius: var(--radius) var(--radius) 0 0;
+    font-weight: 700; font-size: .92rem; letter-spacing:.02em;
   }
-  .section-news .section-header    { background: #eef2ff; color: #3730a3; border-left: 4px solid #4f46e5; }
-  .section-knowledge .section-header { background: #f0fdf4; color: #166534; border-left: 4px solid #16a34a; }
-  .section-tools .section-header   { background: #fff7ed; color: #9a3412; border-left: 4px solid #ea580c; }
-
-  .section-icon { font-size: 1.1rem; }
+  .section-news      .section-header { background:var(--indigo-light); color:var(--indigo-dark); border-left:4px solid var(--indigo); }
+  .section-knowledge .section-header { background:var(--green-light);  color:var(--green);       border-left:4px solid var(--green); }
+  .section-tools     .section-header { background:var(--orange-light); color:var(--orange);      border-left:4px solid var(--orange); }
+  .section-count {
+    margin-left: auto; font-size:.72rem; font-weight:600;
+    padding:2px 8px; border-radius:20px; background:rgba(0,0,0,.06);
+  }
 
   /* ── Card ── */
   .card {
-    background: #fff;
-    padding: 20px 20px 16px;
-    border-bottom: 1px solid #f1f1f1;
+    background: var(--card); padding: 20px 22px 16px;
+    border-bottom: 1px solid var(--border);
+    transition: background .15s;
   }
-  .card:last-child {
-    border-bottom: none;
-    border-radius: 0 0 12px 12px;
-  }
-  .card-number {
-    display: inline-block;
-    background: #4f46e5;
-    color: #fff;
-    font-size: 0.7rem;
-    font-weight: 700;
-    width: 20px; height: 20px;
-    line-height: 20px;
-    text-align: center;
-    border-radius: 50%;
-    margin-right: 8px;
-    vertical-align: middle;
-  }
-  .card-number.green  { background: #16a34a; }
-  .card-number.orange { background: #ea580c; }
+  .card:hover { background: color-mix(in srgb, var(--card) 97%, var(--indigo)); }
+  .card:last-child { border-bottom:none; border-radius:0 0 var(--radius) var(--radius); }
 
-  .card-title {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #111;
-    margin-bottom: 6px;
-    display: inline;
-    vertical-align: middle;
+  .card-header { display:flex; align-items:flex-start; gap:10px; margin-bottom:10px; }
+  .card-num {
+    flex-shrink:0; width:24px; height:24px; line-height:24px;
+    text-align:center; border-radius:50%; font-size:.72rem; font-weight:700;
+    color:#fff; margin-top:2px;
   }
-  .card-key-point {
-    font-size: 0.88rem;
-    color: #555;
-    margin: 8px 0 10px;
-    padding: 8px 12px;
-    background: #f8f8fb;
-    border-left: 3px solid #4f46e5;
-    border-radius: 0 6px 6px 0;
+  .num-blue   { background: var(--indigo); }
+  .num-green  { background: var(--green); }
+  .num-orange { background: var(--orange); }
+  .card-title { font-size:1rem; font-weight:700; color:var(--text); line-height:1.4; }
+
+  .card-keypoint {
+    font-size:.875rem; color:var(--muted);
+    padding:9px 14px; margin:0 0 12px;
+    background: color-mix(in srgb, var(--bg) 60%, var(--card));
+    border-left:3px solid var(--indigo);
+    border-radius:0 8px 8px 0;
   }
+  .section-knowledge .card-keypoint { border-left-color: var(--green); }
+  .section-tools     .card-keypoint { border-left-color: var(--orange); }
+
+  .insights { list-style:none; margin-bottom:10px; }
   .insights-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 6px;
-  }
-  .insights {
-    list-style: none;
-    padding: 0;
+    font-size:.7rem; font-weight:700; color:var(--muted);
+    text-transform:uppercase; letter-spacing:.08em; margin-bottom:5px;
   }
   .insights li {
-    font-size: 0.875rem;
-    color: #333;
-    padding: 3px 0 3px 16px;
-    position: relative;
+    font-size:.86rem; color:var(--text); padding:3px 0 3px 18px; position:relative;
   }
   .insights li::before {
-    content: "▸";
-    position: absolute;
-    left: 0;
-    color: #4f46e5;
-    font-size: 0.75rem;
-    top: 4px;
+    content:"▸"; position:absolute; left:0; top:4px;
+    color:var(--indigo); font-size:.72rem;
   }
+  .section-knowledge .insights li::before { color:var(--green); }
+  .section-tools     .insights li::before { color:var(--orange); }
 
-  /* knowledge 颜色 */
-  .section-knowledge .card-key-point { border-left-color: #16a34a; }
-  .section-knowledge .insights li::before { color: #16a34a; }
+  .kv { display:flex; gap:8px; font-size:.86rem; margin:6px 0; }
+  .kv-label { flex-shrink:0; font-weight:600; color:var(--muted); min-width:4.5em; }
 
-  /* tools 颜色 */
-  .section-tools .card-key-point { border-left-color: #ea580c; }
-  .section-tools .insights li::before { color: #ea580c; }
+  .card-footer {
+    display:flex; align-items:center; justify-content:space-between;
+    margin-top:12px; padding-top:10px; border-top:1px solid var(--border);
+    font-size:.76rem; color:var(--muted);
+  }
+  .card-footer a {
+    display:inline-flex; align-items:center; gap:4px;
+    color:var(--indigo); font-weight:600; font-size:.78rem;
+  }
+  .card-footer a:hover { text-decoration:none; opacity:.8; }
 
-  .card-source {
-    margin-top: 12px;
-    font-size: 0.78rem;
-    color: #999;
+  /* ── 回到顶部 ── */
+  #backtop {
+    position:fixed; bottom:24px; right:20px;
+    width:40px; height:40px; border-radius:50%;
+    background:var(--indigo); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.1rem; cursor:pointer; border:none;
+    box-shadow:0 4px 16px rgba(79,70,229,.35);
+    opacity:0; transform:translateY(8px);
+    transition:opacity .2s, transform .2s;
   }
-  .card-source a {
-    color: #6366f1;
-    font-weight: 500;
-  }
-
-  /* knowledge / tool specific */
-  .kv-row {
-    display: flex;
-    gap: 6px;
-    font-size: 0.875rem;
-    margin: 5px 0;
-  }
-  .kv-label {
-    flex-shrink: 0;
-    font-weight: 600;
-    color: #666;
-    min-width: 5em;
-  }
-  .kv-value { color: #222; }
+  #backtop.show { opacity:1; transform:translateY(0); }
 
   /* ── Footer ── */
   .footer {
-    text-align: center;
-    font-size: 0.78rem;
-    color: #aaa;
-    margin-top: 32px;
-    padding-top: 16px;
-    border-top: 1px solid #e5e7eb;
+    text-align:center; font-size:.76rem; color:var(--muted);
+    margin-top:36px; padding-top:20px; border-top:1px solid var(--border);
   }
 
   /* ── Mobile ── */
-  @media (max-width: 480px) {
-    body { padding: 12px 8px 40px; }
-    .header { padding: 22px 16px; }
-    .header h1 { font-size: 1.3rem; }
-    .card { padding: 16px 14px 12px; }
+  @media (max-width:480px) {
+    .container { padding:16px 12px; }
+    .hero { padding:24px 16px; }
+    .hero h1 { font-size:1.4rem; }
+    .card { padding:16px 14px 12px; }
+    .toc a { font-size:.78rem; padding:8px; }
   }
 </style>
 </head>
 <body>
+<div id="progress"></div>
+
+<!-- 顶部导航 -->
+<nav class="topnav">
+  <span class="topnav-logo">⚡ 每日 AI 简报</span>
+  <div class="topnav-links">
+    <a href="history.html">📚 历史</a>
+  </div>
+</nav>
+
 <div class="container">
 
-  <!-- Header -->
-  <div style="text-align:center;padding:8px;background:#4f46e5"><a href="history.html" style="color:#fff;font-size:0.85rem;text-decoration:none;opacity:0.9">📚 查看历史记录 →</a></div><div class="header">
-    <div class="subtitle">DAILY AI BRIEF</div>
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-label">Daily AI Brief</div>
     <h1>每日 AI 简报</h1>
-    <div class="meta">2026年03月29日 &nbsp;·&nbsp; 精选自 8 个英文信源 &nbsp;·&nbsp; 三层关键词过滤</div>
+    <div class="hero-date">2026年03月29日</div>
+    <div class="hero-tags">
+      <span class="hero-tag">📡 8 个精选信源</span>
+      <span class="hero-tag">🔍 三层关键词过滤</span>
+      <span class="hero-tag">🤖 AI 自动生成</span>
+    </div>
   </div>
 
-  <!-- Section 1: AI 新闻 -->
-  <div class="section section-news">
+  <!-- 快速跳转 -->
+  <div class="toc">
+    <a href="#news">📰 AI 新闻</a>
+    <a href="#knowledge">🧠 AI 知识</a>
+    <a href="#tools">🛠 工具更新</a>
+  </div>
+
+  <!-- 板块一：AI 新闻 -->
+  <div id="news" class="section section-news">
     <div class="section-header">
-      <span class="section-icon">📰</span>
-      板块一：AI 新闻
+      <span>📰</span> 板块一：AI 新闻
+      <span class="section-count">3 条</span>
     </div>
         <div class="card">
       <span class="card-number">1</span>
-      <span class="card-title">Mistral AI开源高性能TTS模型，声称超越ElevenLabs</span>
-      <div class="card-key-point">Mistral发布免费开源TTS模型，性能对标顶尖商业方案。</div>
+      <span class="card-title">Mistral AI开源高性能TTS模型，声称性能超越ElevenLabs</span>
+      <div class="card-key-point">Mistral发布免费开源TTS模型，挑战语音AI头部厂商。</div>
       <div class="insights-label">核心观点</div>
       <ul class="insights">
-        <li>开源策略加速语音AI平民化与可审计性</li>
-<li>企业级TTS正从黑盒API转向可控自研栈</li>
-<li>语音合成竞争焦点转向音质、低延迟与多语言泛化</li>
+        <li>首次将高质量语音合成能力完全开源，降低企业接入门槛</li>
+<li>模型权重免费开放，推动语音AI技术民主化与可审计性</li>
+<li>正值IBM-ElevenLabs合作落地之际，凸显开源与商业生态博弈</li>
       </ul>
       <div class="card-source">
         来源：VentureBeat AI
@@ -227,13 +253,13 @@
     </div>
     <div class="card">
       <span class="card-number">2</span>
-      <span class="card-title">斯坦福研究揭示AI聊天机器人提供个人建议存在严重风险</span>
-      <div class="card-key-point">实证研究表明AI建议易诱发认知偏差与行为危害。</div>
+      <span class="card-title">斯坦福研究揭示AI聊天机器人提供个人建议存在严重危害</span>
+      <div class="card-key-point">实证研究表明AI的‘讨好型回应’会加剧用户认知偏差。</div>
       <div class="insights-label">核心观点</div>
       <ul class="insights">
-        <li>AI的sycophancy倾向在心理脆弱人群中放大伤害</li>
-<li>当前对话系统缺乏伦理边界建模与风险熔断机制</li>
-<li>监管需区分工具型助手与类人咨询角色</li>
+        <li>AI为维持对话亲和力而过度认同用户观点，形成危险反馈闭环</li>
+<li>对焦虑、抑郁倾向人群尤其易诱发非理性决策行为</li>
+<li>呼吁建立面向心理安全的AI交互评估新标准</li>
       </ul>
       <div class="card-source">
         来源：TechCrunch AI
@@ -243,13 +269,13 @@
     </div>
     <div class="card">
       <span class="card-number">3</span>
-      <span class="card-title">NeurIPS政策风波凸显AI科研地缘政治化加剧</span>
-      <div class="card-key-point">顶级会议涉华政策反转，反映全球AI治理裂痕加深。</div>
+      <span class="card-title">NeurIPS政策风波折射AI科研地缘政治化加剧</span>
+      <div class="card-key-point">顶级AI会议涉华政策反复引发学术界信任危机。</div>
       <div class="insights-label">核心观点</div>
       <ul class="insights">
-        <li>学术中立正让位于技术主权与数据合规审查</li>
-<li>中国AI人才外流压力与国际协作信任双下降</li>
-<li>未来顶会或将形成平行评审与成果认证体系</li>
+        <li>学术中立性正让位于国家技术主权叙事</li>
+<li>中国研究人员参与度下降或导致全球AI知识图谱结构性失衡</li>
+<li>国际顶会需重建透明、共识驱动的治理机制</li>
       </ul>
       <div class="card-source">
         来源：Wired AI
@@ -257,24 +283,39 @@
         <a href="https://www.wired.com/story/made-in-china-ai-research-is-starting-to-split-along-geopolitical-lines/" target="_blank" rel="noopener">原文链接 →</a>
       </div>
     </div>
+    <div class="card">
+      <span class="card-number">4</span>
+      <span class="card-title">Anthropic获法院禁令，暂缓美政府‘供应链风险’标签</span>
+      <div class="card-key-point">司法干预阻止特朗普政府单方面限制AI公司商业活动。</div>
+      <div class="insights-label">核心观点</div>
+      <ul class="insights">
+        <li>AI监管权属之争升级：行政指令 vs 司法审查</li>
+<li>‘国家安全’名义下的技术封禁面临法律边界挑战</li>
+<li>为全球AI初创企业提供应对地缘合规风险的先例参考</li>
+      </ul>
+      <div class="card-source">
+        来源：TechCrunch AI
+        &nbsp;·&nbsp;
+        <a href="https://techcrunch.com/2026/03/26/anthropic-wins-injunction-against-trump-administration-over-defense-department-saga/" target="_blank" rel="noopener">原文链接 →</a>
+      </div>
+    </div>
   </div>
 
-  <!-- Section 2: AI 知识 -->
-  <div class="section section-knowledge">
+  <!-- 板块二：AI 知识 -->
+  <div id="knowledge" class="section section-knowledge">
     <div class="section-header">
-      <span class="section-icon">🧠</span>
-      板块二：AI 知识
+      <span>🧠</span> 板块二：AI 知识
     </div>
         <div class="card">
       <span class="card-number green">1</span>
       <span class="card-title">IndexCache稀疏注意力优化器</span>
       <div class="kv-row" style="margin-top:10px">
         <span class="kv-label">为何重要</span>
-        <span class="kv-value">将长上下文推理冗余计算削减75%，显著降低大模型部署成本。</span>
+        <span class="kv-value">显著降低长上下文推理成本，突破LLM实用化瓶颈。</span>
       </div>
       <div class="kv-row">
         <span class="kv-label">学习路径</span>
-        <span class="kv-value">理解稀疏注意力原理 → 对比FlashAttention → 实践Tsinghua开源实现 → 测试200K token场景</span>
+        <span class="kv-value">理解稀疏注意力原理→对比FlashAttention→研读Tsinghua/Z.ai论文→复现200K token场景</span>
       </div>
       <div class="card-source">
         来源：VentureBeat AI
@@ -287,11 +328,11 @@
       <span class="card-title">TurboQuant内存量化算法</span>
       <div class="kv-row" style="margin-top:10px">
         <span class="kv-label">为何重要</span>
-        <span class="kv-value">解决LLM推理中KV缓存瓶颈，实现8倍内存加速与50%+成本下降。</span>
+        <span class="kv-value">8倍KV缓存加速，直击大模型部署核心硬件瓶颈。</span>
       </div>
       <div class="kv-row">
         <span class="kv-label">学习路径</span>
-        <span class="kv-value">掌握KV缓存机制 → 分析量化误差权衡 → 研读Google论文 → 在vLLM中尝试集成</span>
+        <span class="kv-value">掌握KV缓存机制→学习量化基础→分析Google白皮书→对比AWQ/GPTQ工程差异</span>
       </div>
       <div class="card-source">
         来源：VentureBeat AI
@@ -301,28 +342,45 @@
     </div>
     <div class="card">
       <span class="card-number green">3</span>
-      <span class="card-title">EVA语音智能体评估框架</span>
+      <span class="card-title">Ulysses序列并行（Million-Token训练）</span>
       <div class="kv-row" style="margin-top:10px">
         <span class="kv-label">为何重要</span>
-        <span class="kv-value">首个面向多轮语音交互场景的标准化评测体系，填补行业空白。</span>
+        <span class="kv-value">支持百万级token上下文训练，拓展LLM原生长程建模能力。</span>
       </div>
       <div class="kv-row">
         <span class="kv-label">学习路径</span>
-        <span class="kv-value">学习语音Agent任务类型 → 理解EVA多维指标设计 → 使用Hugging Face开源基准复现结果</span>
+        <span class="kv-value">复习Megatron-LM并行范式→理解Ulysses通信拓扑→跑通Hugging Face示例→调优通信带宽</span>
       </div>
       <div class="card-source">
         来源：Hugging Face Blog
         &nbsp;·&nbsp;
-        <a href="https://huggingface.co/blog/ServiceNow-AI/eva" target="_blank" rel="noopener">原文链接 →</a>
+        <a href="https://huggingface.co/blog/ulysses-sp" target="_blank" rel="noopener">原文链接 →</a>
+      </div>
+    </div>
+    <div class="card">
+      <span class="card-number green">4</span>
+      <span class="card-title">AI驱动的伪匿名识别风险</span>
+      <div class="kv-row" style="margin-top:10px">
+        <span class="kv-label">为何重要</span>
+        <span class="kv-value">LLM可规模化反向推断身份，彻底动摇网络匿名制基础。</span>
+      </div>
+      <div class="kv-row">
+        <span class="kv-label">学习路径</span>
+        <span class="kv-value">学习差分隐私局限→分析LLM文本指纹机制→测试OpenAI/Gemini去标识效果→设计对抗扰动策略</span>
+      </div>
+      <div class="card-source">
+        来源：Ars Technica Tech Lab
+        &nbsp;·&nbsp;
+        <a href="https://arstechnica.com/security/2026/03/llms-can-unmask-pseudonymous-users-at-scale-with-surprising-accuracy/" target="_blank" rel="noopener">原文链接 →</a>
       </div>
     </div>
   </div>
 
-  <!-- Section 3: AI 工具更新 -->
-  <div class="section section-tools">
+  <!-- 板块三：AI 工具更新 -->
+  <div id="tools" class="section section-tools">
     <div class="section-header">
-      <span class="section-icon">🛠️</span>
-      板块三：AI 工具更新
+      <span>🛠️</span> 板块三：AI 工具更新
+      <span class="section-count">3 条</span>
     </div>
         <div class="card">
       <span class="card-number orange">1</span>
@@ -333,7 +391,7 @@
       </div>
       <div class="kv-row">
         <span class="kv-label">适用人群</span>
-        <span class="kv-value">SaaS企业客服团队、AI产品负责人</span>
+        <span class="kv-value">企业级客户服务平台开发者</span>
       </div>
       <div class="card-source">
         <a href="https://venturebeat.com/technology/intercoms-new-post-trained-fin-apex-1-0-beats-gpt-5-4-and-claude-sonnet-4-6" target="_blank" rel="noopener">官方链接 →</a>
@@ -341,14 +399,14 @@
     </div>
     <div class="card">
       <span class="card-number orange">2</span>
-      <span class="card-title">Attie</span>
+      <span class="card-title">Attie（Bluesky定制信息流工具）</span>
       <div class="kv-row" style="margin-top:10px">
         <span class="kv-label">更新内容</span>
-        <span class="kv-value">Bluesky推出AI驱动的定制信息流构建App，基于atproto协议支持个性化内容聚合</span>
+        <span class="kv-value">基于atproto协议的AI驱动个性化信息流构建App，支持零代码配置兴趣图谱</span>
       </div>
       <div class="kv-row">
         <span class="kv-label">适用人群</span>
-        <span class="kv-value">去中心化社交开发者、内容策展人、社区运营者</span>
+        <span class="kv-value">去中心化社交平台内容创作者与社区运营者</span>
       </div>
       <div class="card-source">
         <a href="https://techcrunch.com/2026/03/28/bluesky-leans-into-ai-with-attie-an-app-for-building-custom-feeds/" target="_blank" rel="noopener">官方链接 →</a>
@@ -356,25 +414,64 @@
     </div>
     <div class="card">
       <span class="card-number orange">3</span>
-      <span class="card-title">Axplorer</span>
+      <span class="card-title">Axplorer（数学模式发现AI）</span>
       <div class="kv-row" style="margin-top:10px">
         <span class="kv-label">更新内容</span>
-        <span class="kv-value">Axiom Math发布免费AI数学工具，专为发现数学模式与辅助定理证明设计</span>
+        <span class="kv-value">Axiom Math开源免费工具，专为数学家设计，可自动发现定理证明线索与结构规律</span>
       </div>
       <div class="kv-row">
         <span class="kv-label">适用人群</span>
-        <span class="kv-value">数学研究者、高校教师、AI for Science从业者</span>
+        <span class="kv-value">科研数学家、理论计算机学者及STEM教育者</span>
       </div>
       <div class="card-source">
         <a href="https://www.technologyreview.com/2026/03/25/1134642/this-startup-wants-to-change-how-mathematicians-do-math/" target="_blank" rel="noopener">官方链接 →</a>
       </div>
     </div>
+    <div class="card">
+      <span class="card-number orange">4</span>
+      <span class="card-title">Modular Diffusers</span>
+      <div class="kv-row" style="margin-top:10px">
+        <span class="kv-label">更新内容</span>
+        <span class="kv-value">Hugging Face推出模块化扩散模型构建框架，支持Pipeline级自由组合与热插拔优化</span>
+      </div>
+      <div class="kv-row">
+        <span class="kv-label">适用人群</span>
+        <span class="kv-value">生成式AI工程师、多模态应用开发者</span>
+      </div>
+      <div class="card-source">
+        <a href="https://huggingface.co/blog/modular-diffusers" target="_blank" rel="noopener">官方链接 →</a>
+      </div>
+    </div>
   </div>
 
   <div class="footer">
-    由 Claude Opus 4.6 生成 &nbsp;·&nbsp; 2026年03月29日 &nbsp;·&nbsp; AI 简报自动生成系统
+    由 AI 自动生成 &nbsp;·&nbsp; 2026年03月29日 &nbsp;·&nbsp;
+    <a href="history.html">查看历史记录 →</a>
   </div>
-
 </div>
+
+<button id="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  // 阅读进度条
+  window.addEventListener('scroll', () => {
+    const el = document.getElementById('progress');
+    const bt = document.getElementById('backtop');
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    el.style.width = Math.min(pct, 100) + '%';
+    bt.classList.toggle('show', window.scrollY > 300);
+  });
+  // 导航高亮
+  const sections = document.querySelectorAll('.section');
+  const links = document.querySelectorAll('.topnav-links a');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => obs.observe(s));
+</script>
 </body>
 </html>

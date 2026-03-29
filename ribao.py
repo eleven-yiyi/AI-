@@ -253,9 +253,9 @@ USER_PROMPT_TEMPLATE = """今天是 {today}。以下是从 8 个精选英文 AI 
 }}
 
 选取规则：
-- news：选 3 条最重要的 AI 新闻/研究进展
-- knowledge：选 2-4 条有教育价值的技术/概念文章（有则多，无则少）
-- tools：选 3 条 AI 工具发布或重要更新
+- news：选 3-6 条最重要的 AI 新闻/研究进展（有则多，无则少）
+- knowledge：选 3-6 条有教育价值的技术/概念文章（有则多，无则少）
+- tools：选 3-6 条 AI 工具发布或重要更新（有则多，无则少）
 
 只输出纯 JSON，不要包含任何其他文字。"""
 
@@ -332,235 +332,285 @@ HTML_TEMPLATE = """\
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>每日 AI 简报 · {date}</title>
 <style>
-  /* ── Reset & Base ── */
+  :root {{
+    --indigo: #4f46e5; --indigo-dark: #3730a3; --indigo-light: #eef2ff;
+    --green: #16a34a;  --green-light: #f0fdf4;
+    --orange: #ea580c; --orange-light: #fff7ed;
+    --bg: #f4f5f9; --card: #ffffff; --text: #111827; --muted: #6b7280;
+    --border: #e5e7eb; --radius: 14px;
+  }}
+  @media (prefers-color-scheme: dark) {{
+    :root {{
+      --bg: #0f0f13; --card: #1a1a24; --text: #e5e7eb; --muted: #9ca3af;
+      --border: #2d2d3d; --indigo-light: #1e1b4b; --green-light: #052e16;
+      --orange-light: #1c0a00; --indigo-dark: #a5b4fc;
+    }}
+  }}
   *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
+  html {{ scroll-behavior: smooth; }}
   body {{
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
                  "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    background: #f0f2f5;
-    color: #1a1a2e;
-    line-height: 1.7;
-    padding: 20px 12px 48px;
+    background: var(--bg); color: var(--text);
+    line-height: 1.75; padding-bottom: 80px;
   }}
-  a {{ color: #4f46e5; text-decoration: none; }}
+  a {{ color: var(--indigo); text-decoration: none; }}
   a:hover {{ text-decoration: underline; }}
 
+  /* ── 顶部导航 ── */
+  .topnav {{
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(79,70,229,.95);
+    backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.15);
+  }}
+  .topnav-logo {{ color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing:.03em; }}
+  .topnav-links {{ display: flex; gap: 6px; }}
+  .topnav-links a {{
+    color: rgba(255,255,255,.85); font-size: 0.8rem; font-weight: 500;
+    padding: 4px 12px; border-radius: 20px;
+    transition: background .15s;
+  }}
+  .topnav-links a:hover {{ background: rgba(255,255,255,.15); text-decoration: none; }}
+  .topnav-links .active {{ background: rgba(255,255,255,.2); color:#fff; }}
+
+  /* ── 进度条 ── */
+  #progress {{ position:fixed; top:0; left:0; height:3px;
+               background: linear-gradient(90deg,#818cf8,#a78bfa);
+               width:0%; z-index:200; transition:width .1s; }}
+
   /* ── Container ── */
-  .container {{
-    max-width: 680px;
-    margin: 0 auto;
+  .container {{ max-width: 700px; margin: 0 auto; padding: 24px 16px; }}
+
+  /* ── Hero ── */
+  .hero {{
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 60%, #a855f7 100%);
+    border-radius: var(--radius); padding: 36px 28px; text-align: center;
+    color: #fff; margin-bottom: 28px;
+    box-shadow: 0 8px 32px rgba(79,70,229,.25);
+    position: relative; overflow: hidden;
+  }}
+  .hero::before {{
+    content: ""; position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }}
+  .hero-label {{ font-size: .75rem; font-weight:600; letter-spacing:.12em;
+                 opacity:.75; text-transform:uppercase; margin-bottom:8px; }}
+  .hero h1 {{ font-size: 1.75rem; font-weight: 800; letter-spacing:.02em; }}
+  .hero-date {{ margin-top:10px; font-size:.85rem; opacity:.8; }}
+  .hero-tags {{ margin-top:14px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }}
+  .hero-tag {{
+    background: rgba(255,255,255,.15); color:#fff;
+    font-size:.72rem; padding:3px 10px; border-radius:20px; font-weight:500;
   }}
 
-  /* ── Header ── */
-  .header {{
-    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-    border-radius: 16px;
-    padding: 32px 28px;
-    text-align: center;
-    margin-bottom: 24px;
-    color: #fff;
+  /* ── 快速导航 ── */
+  .toc {{
+    display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;
   }}
-  .header h1 {{
-    font-size: 1.6rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
+  .toc a {{
+    flex: 1; min-width: 100px;
+    display: flex; align-items: center; gap: 6px; justify-content: center;
+    background: var(--card); border: 1px solid var(--border);
+    color: var(--text); font-size: .82rem; font-weight: 600;
+    padding: 10px 12px; border-radius: 10px;
+    transition: all .15s;
   }}
-  .header .subtitle {{
-    margin-top: 6px;
-    font-size: 0.88rem;
-    opacity: 0.85;
-    letter-spacing: 0.02em;
-  }}
-  .header .meta {{
-    margin-top: 12px;
-    font-size: 0.78rem;
-    opacity: 0.7;
-  }}
+  .toc a:hover {{ text-decoration:none; border-color: var(--indigo);
+                  box-shadow: 0 0 0 3px rgba(79,70,229,.1); }}
 
   /* ── Section ── */
-  .section {{
-    margin-bottom: 20px;
-  }}
+  .section {{ margin-bottom: 24px; }}
   .section-header {{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 14px 18px;
-    border-radius: 12px 12px 0 0;
-    font-weight: 700;
-    font-size: 0.95rem;
-    letter-spacing: 0.03em;
+    display: flex; align-items: center; gap: 10px;
+    padding: 13px 18px; border-radius: var(--radius) var(--radius) 0 0;
+    font-weight: 700; font-size: .92rem; letter-spacing:.02em;
   }}
-  .section-news .section-header    {{ background: #eef2ff; color: #3730a3; border-left: 4px solid #4f46e5; }}
-  .section-knowledge .section-header {{ background: #f0fdf4; color: #166534; border-left: 4px solid #16a34a; }}
-  .section-tools .section-header   {{ background: #fff7ed; color: #9a3412; border-left: 4px solid #ea580c; }}
-
-  .section-icon {{ font-size: 1.1rem; }}
+  .section-news      .section-header {{ background:var(--indigo-light); color:var(--indigo-dark); border-left:4px solid var(--indigo); }}
+  .section-knowledge .section-header {{ background:var(--green-light);  color:var(--green);       border-left:4px solid var(--green); }}
+  .section-tools     .section-header {{ background:var(--orange-light); color:var(--orange);      border-left:4px solid var(--orange); }}
+  .section-count {{
+    margin-left: auto; font-size:.72rem; font-weight:600;
+    padding:2px 8px; border-radius:20px; background:rgba(0,0,0,.06);
+  }}
 
   /* ── Card ── */
   .card {{
-    background: #fff;
-    padding: 20px 20px 16px;
-    border-bottom: 1px solid #f1f1f1;
+    background: var(--card); padding: 20px 22px 16px;
+    border-bottom: 1px solid var(--border);
+    transition: background .15s;
   }}
-  .card:last-child {{
-    border-bottom: none;
-    border-radius: 0 0 12px 12px;
-  }}
-  .card-number {{
-    display: inline-block;
-    background: #4f46e5;
-    color: #fff;
-    font-size: 0.7rem;
-    font-weight: 700;
-    width: 20px; height: 20px;
-    line-height: 20px;
-    text-align: center;
-    border-radius: 50%;
-    margin-right: 8px;
-    vertical-align: middle;
-  }}
-  .card-number.green  {{ background: #16a34a; }}
-  .card-number.orange {{ background: #ea580c; }}
+  .card:hover {{ background: color-mix(in srgb, var(--card) 97%, var(--indigo)); }}
+  .card:last-child {{ border-bottom:none; border-radius:0 0 var(--radius) var(--radius); }}
 
-  .card-title {{
-    font-size: 1rem;
-    font-weight: 700;
-    color: #111;
-    margin-bottom: 6px;
-    display: inline;
-    vertical-align: middle;
+  .card-header {{ display:flex; align-items:flex-start; gap:10px; margin-bottom:10px; }}
+  .card-num {{
+    flex-shrink:0; width:24px; height:24px; line-height:24px;
+    text-align:center; border-radius:50%; font-size:.72rem; font-weight:700;
+    color:#fff; margin-top:2px;
   }}
-  .card-key-point {{
-    font-size: 0.88rem;
-    color: #555;
-    margin: 8px 0 10px;
-    padding: 8px 12px;
-    background: #f8f8fb;
-    border-left: 3px solid #4f46e5;
-    border-radius: 0 6px 6px 0;
+  .num-blue   {{ background: var(--indigo); }}
+  .num-green  {{ background: var(--green); }}
+  .num-orange {{ background: var(--orange); }}
+  .card-title {{ font-size:1rem; font-weight:700; color:var(--text); line-height:1.4; }}
+
+  .card-keypoint {{
+    font-size:.875rem; color:var(--muted);
+    padding:9px 14px; margin:0 0 12px;
+    background: color-mix(in srgb, var(--bg) 60%, var(--card));
+    border-left:3px solid var(--indigo);
+    border-radius:0 8px 8px 0;
   }}
+  .section-knowledge .card-keypoint {{ border-left-color: var(--green); }}
+  .section-tools     .card-keypoint {{ border-left-color: var(--orange); }}
+
+  .insights {{ list-style:none; margin-bottom:10px; }}
   .insights-label {{
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 6px;
-  }}
-  .insights {{
-    list-style: none;
-    padding: 0;
+    font-size:.7rem; font-weight:700; color:var(--muted);
+    text-transform:uppercase; letter-spacing:.08em; margin-bottom:5px;
   }}
   .insights li {{
-    font-size: 0.875rem;
-    color: #333;
-    padding: 3px 0 3px 16px;
-    position: relative;
+    font-size:.86rem; color:var(--text); padding:3px 0 3px 18px; position:relative;
   }}
   .insights li::before {{
-    content: "▸";
-    position: absolute;
-    left: 0;
-    color: #4f46e5;
-    font-size: 0.75rem;
-    top: 4px;
+    content:"▸"; position:absolute; left:0; top:4px;
+    color:var(--indigo); font-size:.72rem;
   }}
+  .section-knowledge .insights li::before {{ color:var(--green); }}
+  .section-tools     .insights li::before {{ color:var(--orange); }}
 
-  /* knowledge 颜色 */
-  .section-knowledge .card-key-point {{ border-left-color: #16a34a; }}
-  .section-knowledge .insights li::before {{ color: #16a34a; }}
+  .kv {{ display:flex; gap:8px; font-size:.86rem; margin:6px 0; }}
+  .kv-label {{ flex-shrink:0; font-weight:600; color:var(--muted); min-width:4.5em; }}
 
-  /* tools 颜色 */
-  .section-tools .card-key-point {{ border-left-color: #ea580c; }}
-  .section-tools .insights li::before {{ color: #ea580c; }}
+  .card-footer {{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-top:12px; padding-top:10px; border-top:1px solid var(--border);
+    font-size:.76rem; color:var(--muted);
+  }}
+  .card-footer a {{
+    display:inline-flex; align-items:center; gap:4px;
+    color:var(--indigo); font-weight:600; font-size:.78rem;
+  }}
+  .card-footer a:hover {{ text-decoration:none; opacity:.8; }}
 
-  .card-source {{
-    margin-top: 12px;
-    font-size: 0.78rem;
-    color: #999;
+  /* ── 回到顶部 ── */
+  #backtop {{
+    position:fixed; bottom:24px; right:20px;
+    width:40px; height:40px; border-radius:50%;
+    background:var(--indigo); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.1rem; cursor:pointer; border:none;
+    box-shadow:0 4px 16px rgba(79,70,229,.35);
+    opacity:0; transform:translateY(8px);
+    transition:opacity .2s, transform .2s;
   }}
-  .card-source a {{
-    color: #6366f1;
-    font-weight: 500;
-  }}
-
-  /* knowledge / tool specific */
-  .kv-row {{
-    display: flex;
-    gap: 6px;
-    font-size: 0.875rem;
-    margin: 5px 0;
-  }}
-  .kv-label {{
-    flex-shrink: 0;
-    font-weight: 600;
-    color: #666;
-    min-width: 5em;
-  }}
-  .kv-value {{ color: #222; }}
+  #backtop.show {{ opacity:1; transform:translateY(0); }}
 
   /* ── Footer ── */
   .footer {{
-    text-align: center;
-    font-size: 0.78rem;
-    color: #aaa;
-    margin-top: 32px;
-    padding-top: 16px;
-    border-top: 1px solid #e5e7eb;
+    text-align:center; font-size:.76rem; color:var(--muted);
+    margin-top:36px; padding-top:20px; border-top:1px solid var(--border);
   }}
 
   /* ── Mobile ── */
-  @media (max-width: 480px) {{
-    body {{ padding: 12px 8px 40px; }}
-    .header {{ padding: 22px 16px; }}
-    .header h1 {{ font-size: 1.3rem; }}
-    .card {{ padding: 16px 14px 12px; }}
+  @media (max-width:480px) {{
+    .container {{ padding:16px 12px; }}
+    .hero {{ padding:24px 16px; }}
+    .hero h1 {{ font-size:1.4rem; }}
+    .card {{ padding:16px 14px 12px; }}
+    .toc a {{ font-size:.78rem; padding:8px; }}
   }}
 </style>
 </head>
 <body>
+<div id="progress"></div>
+
+<!-- 顶部导航 -->
+<nav class="topnav">
+  <span class="topnav-logo">⚡ 每日 AI 简报</span>
+  <div class="topnav-links">
+    <a href="history.html">📚 历史</a>
+  </div>
+</nav>
+
 <div class="container">
 
-  <!-- Header -->
-  <div class="header">
-    <div class="subtitle">DAILY AI BRIEF</div>
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-label">Daily AI Brief</div>
     <h1>每日 AI 简报</h1>
-    <div class="meta">{date} &nbsp;·&nbsp; 精选自 8 个英文信源 &nbsp;·&nbsp; 三层关键词过滤</div>
+    <div class="hero-date">{date}</div>
+    <div class="hero-tags">
+      <span class="hero-tag">📡 8 个精选信源</span>
+      <span class="hero-tag">🔍 三层关键词过滤</span>
+      <span class="hero-tag">🤖 AI 自动生成</span>
+    </div>
   </div>
 
-  <!-- Section 1: AI 新闻 -->
-  <div class="section section-news">
+  <!-- 快速跳转 -->
+  <div class="toc">
+    <a href="#news">📰 AI 新闻</a>
+    <a href="#knowledge">🧠 AI 知识</a>
+    <a href="#tools">🛠 工具更新</a>
+  </div>
+
+  <!-- 板块一：AI 新闻 -->
+  <div id="news" class="section section-news">
     <div class="section-header">
-      <span class="section-icon">📰</span>
-      板块一：AI 新闻
+      <span>📰</span> 板块一：AI 新闻
+      <span class="section-count">3 条</span>
     </div>
     {news_html}
   </div>
 
-  <!-- Section 2: AI 知识 -->
-  <div class="section section-knowledge">
+  <!-- 板块二：AI 知识 -->
+  <div id="knowledge" class="section section-knowledge">
     <div class="section-header">
-      <span class="section-icon">🧠</span>
-      板块二：AI 知识
+      <span>🧠</span> 板块二：AI 知识
     </div>
     {knowledge_html}
   </div>
 
-  <!-- Section 3: AI 工具更新 -->
-  <div class="section section-tools">
+  <!-- 板块三：AI 工具更新 -->
+  <div id="tools" class="section section-tools">
     <div class="section-header">
-      <span class="section-icon">🛠️</span>
-      板块三：AI 工具更新
+      <span>🛠️</span> 板块三：AI 工具更新
+      <span class="section-count">3 条</span>
     </div>
     {tools_html}
   </div>
 
   <div class="footer">
-    由 Claude Opus 4.6 生成 &nbsp;·&nbsp; {date} &nbsp;·&nbsp; AI 简报自动生成系统
+    由 AI 自动生成 &nbsp;·&nbsp; {date} &nbsp;·&nbsp;
+    <a href="history.html">查看历史记录 →</a>
   </div>
-
 </div>
+
+<button id="backtop" onclick="window.scrollTo({{top:0,behavior:'smooth'}})">↑</button>
+
+<script>
+  // 阅读进度条
+  window.addEventListener('scroll', () => {{
+    const el = document.getElementById('progress');
+    const bt = document.getElementById('backtop');
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    el.style.width = Math.min(pct, 100) + '%';
+    bt.classList.toggle('show', window.scrollY > 300);
+  }});
+  // 导航高亮
+  const sections = document.querySelectorAll('.section');
+  const links = document.querySelectorAll('.topnav-links a');
+  const obs = new IntersectionObserver(entries => {{
+    entries.forEach(e => {{
+      if (e.isIntersecting) {{
+        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+      }}
+    }});
+  }}, {{ threshold: 0.4 }});
+  sections.forEach(s => obs.observe(s));
+</script>
 </body>
 </html>
 """
@@ -666,21 +716,7 @@ def update_index(output_dir: Path, brief: dict, date_slug: str) -> None:
     # history.html = 历史列表；index.html = 最新简报（根域名直接可达）
     (output_dir / "history.html").write_text(render_index(history), encoding="utf-8")
     latest_html = (output_dir / f"ribao_{date_slug}.html").read_text(encoding="utf-8")
-    (output_dir / "index.html").write_text(
-        latest_html.replace(
-            "</title>",
-            "</title>\n<base href=\"./\">",
-            1,
-        ).replace(
-            "<div class=\"header\">",
-            "<div style=\"text-align:center;padding:8px;background:#4f46e5\">"
-            "<a href=\"history.html\" style=\"color:#fff;font-size:0.85rem;"
-            "text-decoration:none;opacity:0.9\">📚 查看历史记录 →</a></div>"
-            "<div class=\"header\">",
-            1,
-        ),
-        encoding="utf-8",
-    )
+    (output_dir / "index.html").write_text(latest_html, encoding="utf-8")
     print(f"  ✅ 历史索引已更新（共 {len(history)} 期）")
 
 
@@ -692,134 +728,236 @@ INDEX_TEMPLATE = """\
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>每日 AI 简报 · 历史记录</title>
 <style>
+  :root {{
+    --indigo: #4f46e5; --indigo-dark: #3730a3; --indigo-light: #eef2ff;
+    --green: #16a34a;  --green-light: #f0fdf4;
+    --orange: #ea580c; --orange-light: #fff7ed;
+    --bg: #f4f5f9; --card: #ffffff; --text: #111827; --muted: #6b7280;
+    --border: #e5e7eb; --radius: 14px;
+  }}
+  @media (prefers-color-scheme: dark) {{
+    :root {{
+      --bg: #0f0f13; --card: #1a1a24; --text: #e5e7eb; --muted: #9ca3af;
+      --border: #2d2d3d; --indigo-light: #1e1b4b; --green-light: #052e16;
+      --orange-light: #1c0a00; --indigo-dark: #a5b4fc;
+    }}
+  }}
   *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
+  html {{ scroll-behavior: smooth; }}
   body {{
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
                  "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    background: #f0f2f5;
-    color: #1a1a2e;
-    line-height: 1.7;
-    padding: 20px 12px 48px;
+    background: var(--bg); color: var(--text);
+    line-height: 1.75; padding-bottom: 80px;
   }}
-  a {{ color: inherit; text-decoration: none; }}
-  .container {{ max-width: 680px; margin: 0 auto; }}
+  a {{ color: var(--indigo); text-decoration: none; }}
+  a:hover {{ text-decoration: underline; }}
 
-  .header {{
-    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-    border-radius: 16px;
-    padding: 32px 28px;
-    text-align: center;
-    margin-bottom: 28px;
-    color: #fff;
+  /* ── 顶部导航 ── */
+  .topnav {{
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(79,70,229,.95);
+    backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.15);
   }}
-  .header h1 {{ font-size: 1.6rem; font-weight: 700; }}
-  .header .sub {{ margin-top: 6px; font-size: 0.88rem; opacity: 0.8; }}
+  .topnav-logo {{ color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing:.03em; }}
+  .topnav-links {{ display: flex; gap: 6px; }}
+  .topnav-links a {{
+    color: rgba(255,255,255,.85); font-size: 0.8rem; font-weight: 500;
+    padding: 4px 12px; border-radius: 20px;
+    transition: background .15s;
+  }}
+  .topnav-links a:hover {{ background: rgba(255,255,255,.15); text-decoration: none; }}
+  .topnav-links .active {{ background: rgba(255,255,255,.2); color:#fff; }}
 
-  .stats {{
-    display: flex;
-    gap: 12px;
-    margin-bottom: 20px;
-  }}
-  .stat-card {{
-    flex: 1;
-    background: #fff;
-    border-radius: 12px;
-    padding: 16px;
-    text-align: center;
-  }}
-  .stat-num {{ font-size: 1.8rem; font-weight: 700; color: #4f46e5; }}
-  .stat-label {{ font-size: 0.78rem; color: #888; margin-top: 2px; }}
+  /* ── Container ── */
+  .container {{ max-width: 700px; margin: 0 auto; padding: 24px 16px; }}
 
+  /* ── Hero ── */
+  .hero {{
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 60%, #a855f7 100%);
+    border-radius: var(--radius); padding: 36px 28px; text-align: center;
+    color: #fff; margin-bottom: 28px;
+    box-shadow: 0 8px 32px rgba(79,70,229,.25);
+    position: relative; overflow: hidden;
+  }}
+  .hero::before {{
+    content: ""; position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }}
+  .hero-label {{ font-size:.75rem; font-weight:600; letter-spacing:.12em;
+                 opacity:.75; text-transform:uppercase; margin-bottom:8px; }}
+  .hero h1 {{ font-size:1.75rem; font-weight:800; letter-spacing:.02em; }}
+  .hero-sub {{ margin-top:10px; font-size:.85rem; opacity:.8; }}
+  .hero-stats {{
+    margin-top: 18px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  }}
+  .hero-stat {{
+    background: rgba(255,255,255,.12); border-radius: 12px;
+    padding: 10px 20px; text-align: center; min-width: 90px;
+  }}
+  .hero-stat-num {{ font-size: 1.5rem; font-weight: 800; line-height: 1; }}
+  .hero-stat-label {{ font-size: .7rem; opacity: .8; margin-top: 3px; letter-spacing:.04em; }}
+
+  /* ── 搜索框 ── */
+  .search-wrap {{ position: relative; margin-bottom: 20px; }}
+  .search-wrap input {{
+    width: 100%; padding: 12px 16px 12px 42px;
+    border: 1px solid var(--border); border-radius: 10px;
+    background: var(--card); color: var(--text);
+    font-size: .9rem; outline: none;
+    transition: border-color .15s, box-shadow .15s;
+  }}
+  .search-wrap input:focus {{
+    border-color: var(--indigo);
+    box-shadow: 0 0 0 3px rgba(79,70,229,.1);
+  }}
+  .search-icon {{
+    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--muted); font-size: .95rem; pointer-events: none;
+  }}
+  #no-result {{
+    text-align: center; color: var(--muted); padding: 32px;
+    font-size: .9rem; display: none;
+  }}
+
+  /* ── 条目 ── */
   .entry {{
-    background: #fff;
-    border-radius: 12px;
+    background: var(--card);
+    border-radius: var(--radius);
     padding: 18px 20px;
     margin-bottom: 12px;
     display: block;
-    transition: box-shadow .15s, transform .15s;
-    border-left: 4px solid #4f46e5;
+    border-left: 4px solid var(--indigo);
+    transition: box-shadow .15s, transform .15s, background .15s;
+    color: var(--text);
   }}
   .entry:hover {{
-    box-shadow: 0 4px 20px rgba(79,70,229,.12);
-    transform: translateY(-1px);
+    box-shadow: 0 6px 24px rgba(79,70,229,.12);
+    transform: translateY(-2px);
+    text-decoration: none;
+    background: color-mix(in srgb, var(--card) 97%, var(--indigo));
   }}
   .entry-top {{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 10px; gap: 8px;
   }}
-  .entry-date {{ font-size: 1rem; font-weight: 700; color: #111; }}
-  .entry-badges {{ display: flex; gap: 6px; }}
-  .badge {{
-    font-size: 0.72rem;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 20px;
-  }}
-  .badge-news      {{ background: #eef2ff; color: #4f46e5; }}
-  .badge-knowledge {{ background: #f0fdf4; color: #16a34a; }}
-  .badge-tools     {{ background: #fff7ed; color: #ea580c; }}
-  .entry-headlines {{ list-style: none; }}
+  .entry-date {{ font-size: .95rem; font-weight: 700; color: var(--text); white-space: nowrap; }}
+  .entry-arrow {{ color: var(--indigo); font-size: .9rem; flex-shrink: 0; }}
+
+  .entry-meta {{ font-size: .76rem; color: var(--muted); margin-bottom: 8px; }}
+
+  .entry-headlines {{ list-style: none; margin-top: 8px; }}
   .entry-headlines li {{
-    font-size: 0.85rem;
-    color: #555;
-    padding: 2px 0 2px 14px;
-    position: relative;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: .84rem; color: var(--muted);
+    padding: 3px 0 3px 16px; position: relative;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }}
   .entry-headlines li::before {{
-    content: "▸";
-    position: absolute;
-    left: 0;
-    color: #a5b4fc;
-    font-size: 0.7rem;
-    top: 4px;
+    content: "▸"; position: absolute; left: 0; top: 4px;
+    color: var(--indigo); font-size: .68rem; opacity: .7;
   }}
+
+  /* ── 回到顶部 ── */
+  #backtop {{
+    position: fixed; bottom: 24px; right: 20px;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--indigo); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; cursor: pointer; border: none;
+    box-shadow: 0 4px 16px rgba(79,70,229,.35);
+    opacity: 0; transform: translateY(8px);
+    transition: opacity .2s, transform .2s;
+  }}
+  #backtop.show {{ opacity: 1; transform: translateY(0); }}
+
+  /* ── Footer ── */
   .footer {{
-    text-align: center;
-    font-size: 0.78rem;
-    color: #aaa;
-    margin-top: 32px;
+    text-align: center; font-size: .76rem; color: var(--muted);
+    margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--border);
   }}
+
+  /* ── Mobile ── */
   @media (max-width: 480px) {{
-    .stats {{ flex-direction: column; }}
-    .header {{ padding: 22px 16px; }}
+    .container {{ padding: 16px 12px; }}
+    .hero {{ padding: 24px 16px; }}
+    .hero h1 {{ font-size: 1.4rem; }}
+    .hero-stats {{ gap: 8px; }}
+    .hero-stat {{ padding: 8px 14px; min-width: 70px; }}
+    .entry-top {{ flex-wrap: wrap; }}
   }}
 </style>
 </head>
 <body>
+
+<!-- 顶部导航 -->
+<nav class="topnav">
+  <span class="topnav-logo">⚡ 每日 AI 简报</span>
+  <div class="topnav-links">
+    <a href="index.html">📰 最新</a>
+    <a href="history.html" class="active">📚 历史</a>
+  </div>
+</nav>
+
 <div class="container">
-  <div style="text-align:center;padding:8px;background:#4f46e5;border-radius:12px 12px 0 0;margin-bottom:-4px">
-    <a href="index.html" style="color:#fff;font-size:0.85rem;text-decoration:none;opacity:0.9">← 返回最新简报</a>
-  </div>
-  <div class="header" style="border-radius:0 0 16px 16px">
-    <div class="sub">DAILY AI BRIEF · HISTORY</div>
-    <h1>每日 AI 简报</h1>
-    <div class="sub" style="margin-top:8px">历史记录存档</div>
-  </div>
 
-  <div class="stats">
-    <div class="stat-card">
-      <div class="stat-num">{total}</div>
-      <div class="stat-label">累计期数</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">{latest}</div>
-      <div class="stat-label">最新一期</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">{total_articles}</div>
-      <div class="stat-label">累计文章</div>
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-label">Daily AI Brief · Archive</div>
+    <h1>历史记录存档</h1>
+    <div class="hero-sub">每日自动生成，记录 AI 世界的每一天</div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">{total}</div>
+        <div class="hero-stat-label">累计期数</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">{total_articles}</div>
+        <div class="hero-stat-label">累计文章数</div>
+      </div>
     </div>
   </div>
 
-  {entries_html}
+  <!-- 搜索 -->
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search" placeholder="搜索日期或标题关键词…" autocomplete="off">
+  </div>
 
-  <div class="footer">由 AI 自动生成 · GitHub Actions 每日驱动</div>
+  <!-- 条目列表 -->
+  <div id="entry-list">
+    {entries_html}
+  </div>
+  <div id="no-result">没有找到匹配的记录</div>
+
+  <div class="footer">由 AI 自动生成 &nbsp;·&nbsp; GitHub Actions 每日驱动</div>
 </div>
+
+<button id="backtop" onclick="window.scrollTo({{top:0,behavior:'smooth'}})">↑</button>
+
+<script>
+  // 回到顶部按钮
+  window.addEventListener('scroll', () => {{
+    document.getElementById('backtop').classList.toggle('show', window.scrollY > 300);
+  }});
+
+  // 搜索过滤
+  const searchEl = document.getElementById('search');
+  const entries  = document.querySelectorAll('.entry');
+  const noResult = document.getElementById('no-result');
+  searchEl.addEventListener('input', () => {{
+    const q = searchEl.value.trim().toLowerCase();
+    let visible = 0;
+    entries.forEach(el => {{
+      const match = !q || el.textContent.toLowerCase().includes(q);
+      el.style.display = match ? '' : 'none';
+      if (match) visible++;
+    }});
+    noResult.style.display = visible === 0 ? '' : 'none';
+  }});
+</script>
 </body>
 </html>
 """
@@ -835,24 +973,23 @@ def render_index(history: list[dict]) -> str:
     parts = []
     for h in history:
         headlines_html = "\n".join(
-            f'<li>{_esc(hl)}</li>' for hl in h.get("headlines", []) if hl
+            f'      <li>{_esc(hl)}</li>' for hl in h.get("headlines", []) if hl
         )
+        total_items = h.get('news_count',0) + h.get('knowledge_count',0) + h.get('tools_count',0)
         parts.append(f"""\
   <a class="entry" href="{h['filename']}">
     <div class="entry-top">
       <span class="entry-date">📅 {_esc(h['date'])}</span>
-      <span class="entry-badges">
-        <span class="badge badge-news">📰 {h.get('news_count',0)}</span>
-        <span class="badge badge-knowledge">🧠 {h.get('knowledge_count',0)}</span>
-        <span class="badge badge-tools">🛠 {h.get('tools_count',0)}</span>
-      </span>
+      <span class="entry-arrow">→</span>
     </div>
-    <ul class="entry-headlines">{headlines_html}</ul>
+    <div class="entry-meta">共 {total_items} 篇精选内容</div>
+    <ul class="entry-headlines">
+{headlines_html}
+    </ul>
   </a>""")
 
     return INDEX_TEMPLATE.format(
         total=total,
-        latest=latest,
         total_articles=total_articles,
         entries_html="\n".join(parts),
     )
@@ -862,9 +999,9 @@ def render_html(brief: dict) -> str:
     date_str = brief.get("date", datetime.now().strftime("%Y年%m月%d日"))
     return HTML_TEMPLATE.format(
         date=date_str,
-        news_html=render_news(brief.get("news", [])),
-        knowledge_html=render_knowledge(brief.get("knowledge", [])),
-        tools_html=render_tools(brief.get("tools", [])),
+        news_html=render_news(brief.get("news", [])[:6]),
+        knowledge_html=render_knowledge(brief.get("knowledge", [])[:6]),
+        tools_html=render_tools(brief.get("tools", [])[:6]),
     )
 
 
