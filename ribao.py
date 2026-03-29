@@ -924,7 +924,7 @@ def main():
 
     # 4. 渲染 HTML 并保存
     print("[4/4] 渲染 HTML 邮件...")
-    output_dir = Path(__file__).parent / "output"
+    output_dir = Path(__file__).parent / "docs"
     output_dir.mkdir(exist_ok=True)
 
     date_slug = datetime.now().strftime("%Y-%m-%d")
