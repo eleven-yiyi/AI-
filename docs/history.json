@@ -1,15 +1,15 @@
 [
   {
-    "date": "2026年03月29日",
+    "date": "2026年03月30日",
     "slug": "2026-03-30",
     "filename": "ribao_2026-03-30.html",
     "news_count": 4,
-    "knowledge_count": 4,
-    "tools_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
     "headlines": [
-      "Mistral AI开源高性能TTS模型，声称性能超越ElevenLabs",
-      "斯坦福研究揭示AI聊天机器人提供个人建议存在严重危害",
-      "NeurIPS政策风波折射AI科研地缘政治化加剧"
+      "Mistral AI开源高性能TTS模型，声称超越ElevenLabs",
+      "OpenAI紧急关停Sora：数据合规、算力成本与战略收缩三重动因",
+      "NeurIPS地缘政策风波：AI研究正被强制嵌入国家技术主权框架"
     ]
   },
   {
