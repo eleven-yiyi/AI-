@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年03月31日",
+    "slug": "2026-03-31",
+    "filename": "ribao_2026-03-31.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Midjourney工程师发布开源Web设计新标准Pretext",
+      "RSAC 2026发布五大AI代理身份框架，暴露三大安全缺口",
+      "Rebellions获4亿美元融资，估值23亿美元冲刺AI芯片IPO"
+    ]
+  },
+  {
     "date": "2026年03月30日",
     "slug": "2026-03-30",
     "filename": "ribao_2026-03-30.html",
