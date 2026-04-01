@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年04月01日",
+    "slug": "2026-04-01",
+    "filename": "ribao_2026-04-01.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "axios npm 供应链攻击：黑客植入跨平台远程访问木马",
+      "OpenAI 完成 1220 亿美元融资，估值达 8520 亿美元",
+      "美国法官叫停五角大楼对 Anthropic 的‘供应链风险’认定"
+    ]
+  },
+  {
     "date": "2026年03月31日",
     "slug": "2026-03-31",
     "filename": "ribao_2026-03-31.html",
