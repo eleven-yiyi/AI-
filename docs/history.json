@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年04月02日",
+    "slug": "2026-04-02",
+    "filename": "ribao_2026-04-02.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Anthropic意外泄露Claude Code全部源码，暴露51.2万行TypeScript代码",
+      "axios遭供应链攻击：黑客劫持维护者token发布含RAT的恶意版本",
+      "OpenAI完成1220亿美元融资，估值达8520亿美元，逼近IPO"
+    ]
+  },
+  {
     "date": "2026年04月01日",
     "slug": "2026-04-01",
     "filename": "ribao_2026-04-01.html",
