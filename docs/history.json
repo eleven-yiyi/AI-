@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年04月03日",
+    "slug": "2026-04-03",
+    "filename": "ribao_2026-04-03.html",
+    "news_count": 5,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Arcee发布开源Trinity-Large-Thinking：罕见的高性能美国自研可定制AI大模型",
+      "Google Gemma 4全面转向Apache 2.0许可证，企业级采用门槛大幅降低",
+      "微软发布三大自研基础模型，正式向OpenAI与Google发起直接技术挑战"
+    ]
+  },
+  {
     "date": "2026年04月02日",
     "slug": "2026-04-02",
     "filename": "ribao_2026-04-02.html",
