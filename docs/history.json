@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年04月04日",
+    "slug": "2026-04-04",
+    "filename": "ribao_2026-04-04.html",
+    "news_count": 5,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Anthropic 封禁 Claude 订阅用于第三方 AI 代理（如 OpenClaw）",
+      "Nvidia 发布开源企业级 AI 代理平台 Agent Toolkit",
+      "微软发布三款自研基础模型，直击 OpenAI 与谷歌"
+    ]
+  },
+  {
     "date": "2026年04月03日",
     "slug": "2026-04-03",
     "filename": "ribao_2026-04-03.html",
