@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年04月05日",
+    "slug": "2026-04-05",
+    "filename": "ribao_2026-04-05.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "微软发布三款自研基础模型，直击OpenAI与谷歌核心战场",
+      "Anthropic以4亿美元收购生物技术AI公司Coefficient Bio",
+      "Google发布Gemma 4并全面转向Apache 2.0许可证"
+    ]
+  },
+  {
     "date": "2026年04月04日",
     "slug": "2026-04-04",
     "filename": "ribao_2026-04-04.html",
