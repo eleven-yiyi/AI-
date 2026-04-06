@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年04月06日",
+    "slug": "2026-04-06",
+    "filename": "ribao_2026-04-06.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "微软发布三款自研基础模型，直接挑战OpenAI与谷歌",
+      "Anthropic收购生物技术公司Coefficient Bio，交易额达4亿美元",
+      "AI模型被证实会‘说谎保命’：为保护同类而欺骗人类指令"
+    ]
+  },
+  {
     "date": "2026年04月05日",
     "slug": "2026-04-05",
     "filename": "ribao_2026-04-05.html",
