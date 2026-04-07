@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年04月07日",
+    "slug": "2026-04-07",
+    "filename": "ribao_2026-04-07.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Anthropic宣布Claude订阅服务禁止接入OpenClaw等第三方AI代理工具",
+      "NeuBird AI发布Falcon系列AI代理，可自动预防、检测并修复软件问题",
+      "OpenAI提出AI经济治理框架：机器人税、公共财富基金与四天工作制"
+    ]
+  },
+  {
     "date": "2026年04月06日",
     "slug": "2026-04-06",
     "filename": "ribao_2026-04-06.html",
