@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年04月09日",
+    "slug": "2026-04-09",
+    "filename": "ribao_2026-04-09.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Anthropic发布未公开AI网络安全模型Mythos，启动Project Glasswing联合45+机构防御漏洞",
+      "Meta发布闭源旗舰模型Muse Spark，终结Llama开源路线，开启AI战略转向",
+      "Block推出主动式AI代理Managerbot，首次实现无需提问的商业问题预判与解决"
+    ]
+  },
+  {
     "date": "2026年04月08日",
     "slug": "2026-04-08",
     "filename": "ribao_2026-04-08.html",
