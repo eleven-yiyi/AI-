@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年04月12日",
+    "slug": "2026-04-12",
+    "filename": "ribao_2026-04-12.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "OpenAI推出ChatGPT Pro $100订阅计划，Codex用量提升5倍",
+      "Meta发布全新闭源AI模型Muse Spark，标志开源路线重大转向",
+      "Anthropic限制Mythos模型发布：可自主发现27年未修复TCP漏洞"
+    ]
+  },
+  {
     "date": "2026年04月11日",
     "slug": "2026-04-11",
     "filename": "ribao_2026-04-11.html",
