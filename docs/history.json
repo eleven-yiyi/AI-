@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年04月13日",
+    "slug": "2026-04-13",
+    "filename": "ribao_2026-04-13.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "OpenAI推出ChatGPT Pro $100月费计划，Codex用量提升5倍",
+      "Anthropic发布Mythos模型：可自主发现27年未被发现的TCP栈漏洞",
+      "特朗普政府官员疑似鼓励银行测试Anthropic Mythos模型"
+    ]
+  },
+  {
     "date": "2026年04月12日",
     "slug": "2026-04-12",
     "filename": "ribao_2026-04-12.html",
