@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年04月14日",
+    "slug": "2026-04-14",
+    "filename": "ribao_2026-04-14.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Anthropic被指‘削弱’Claude性能，用户集体质疑模型退化",
+      "OpenAI收购个人理财AI初创公司Hiro，强化ChatGPT金融规划能力",
+      "斯坦福AI指数发布：专家与公众认知鸿沟扩大，就业与医疗焦虑加剧"
+    ]
+  },
+  {
     "date": "2026年04月13日",
     "slug": "2026-04-13",
     "filename": "ribao_2026-04-13.html",
