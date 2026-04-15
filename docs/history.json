@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年04月15日",
+    "slug": "2026-04-15",
+    "filename": "ribao_2026-04-15.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Anthropic推出Claude托管智能体平台，企业AI部署迎来一站式方案但引发厂商锁定隐忧",
+      "Databricks新研究证实：多步智能体在混合查询中显著优于单轮RAG，强模型仍落后21%",
+      "斯坦福AI指数报告发布：AI公众认知鸿沟扩大，就业与医疗焦虑加剧"
+    ]
+  },
+  {
     "date": "2026年04月14日",
     "slug": "2026-04-14",
     "filename": "ribao_2026-04-14.html",
