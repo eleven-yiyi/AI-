@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年04月16日",
+    "slug": "2026-04-16",
+    "filename": "ribao_2026-04-16.html",
+    "news_count": 5,
+    "knowledge_count": 4,
+    "tools_count": 4,
+    "headlines": [
+      "微软修复Copilot Studio间接提示注入漏洞，但数据仍遭窃取",
+      "前沿大模型在生产环境中失败率高达1/3，可审计性持续恶化",
+      "Meta推出‘超智能体’（Hyperagents），突破非编码任务的自优化瓶颈"
+    ]
+  },
+  {
     "date": "2026年04月15日",
     "slug": "2026-04-15",
     "filename": "ribao_2026-04-15.html",
