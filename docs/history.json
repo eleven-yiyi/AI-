@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年04月18日",
+    "slug": "2026-04-18",
+    "filename": "ribao_2026-04-18.html",
+    "news_count": 5,
+    "knowledge_count": 4,
+    "tools_count": 3,
+    "headlines": [
+      "Anthropic发布Claude Design：用自然语言生成交互式原型，挑战Figma",
+      "Salesforce发布Headless 360：将整个平台API化，全面赋能AI代理",
+      "OpenAI发布GPT-Rosalind：面向生命科学的专用模型，加速药物研发"
+    ]
+  },
+  {
     "date": "2026年04月17日",
     "slug": "2026-04-17",
     "filename": "ribao_2026-04-17.html",
