@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年04月22日",
+    "slug": "2026-04-22",
+    "filename": "ribao_2026-04-22.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Google发布Deep Research与Deep Research Max：首个融合公网与企业私有数据的自主研究代理",
+      "Vercel遭OAuth链式攻击：AI工具引入暴露企业身份治理盲区",
+      "Anthropic Mythos工具被曝遭未授权访问；Mozilla证实其发现271个Firefox漏洞"
+    ]
+  },
+  {
     "date": "2026年04月21日",
     "slug": "2026-04-21",
     "filename": "ribao_2026-04-21.html",
