@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年04月23日",
+    "slug": "2026-04-23",
+    "filename": "ribao_2026-04-23.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "OpenAI发布Workspace Agents：企业级AI代理新范式，深度集成Slack、Salesforce等系统",
+      "Google Gemini支持单机离线部署，拔电即销毁数据",
+      "OpenAI开源Privacy Filter：端侧PII识别与脱敏模型"
+    ]
+  },
+  {
     "date": "2026年04月22日",
     "slug": "2026-04-22",
     "filename": "ribao_2026-04-22.html",
