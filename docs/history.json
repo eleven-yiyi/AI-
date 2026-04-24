@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年04月24日",
+    "slug": "2026-04-24",
+    "filename": "ribao_2026-04-24.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Anthropic确认Claude性能下降源于系统指令与安全机制调整",
+      "OpenAI正式发布GPT-5.5，小幅领先Claude Mythos Preview",
+      "OpenAI推出Workspace Agents：面向企业的可集成AI代理新范式"
+    ]
+  },
+  {
     "date": "2026年04月23日",
     "slug": "2026-04-23",
     "filename": "ribao_2026-04-23.html",
