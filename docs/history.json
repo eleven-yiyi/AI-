@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年04月25日",
+    "slug": "2026-04-25",
+    "filename": "ribao_2026-04-25.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "DeepSeek-V4发布：百万token上下文、近前沿性能、1/6成本",
+      "OpenAI发布GPT-5.5及Workspace Agents，加速AI‘超级应用’落地",
+      "Anthropic承认Claude性能下降源于‘过度安全化’配置失误"
+    ]
+  },
+  {
     "date": "2026年04月24日",
     "slug": "2026-04-24",
     "filename": "ribao_2026-04-24.html",
