@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年04月26日",
+    "slug": "2026-04-26",
+    "filename": "ribao_2026-04-26.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "DeepSeek-V4正式发布：百万token上下文、接近SOTA性能、成本仅为Opus 4.7/GPT-5.5的1/6",
+      "Anthropic承认Claude性能下降源于‘过度强化’安全机制与系统bug叠加",
+      "OpenAI发布GPT-5.5，小幅领先Claude Mythos Preview，终端推理能力受关注"
+    ]
+  },
+  {
     "date": "2026年04月25日",
     "slug": "2026-04-25",
     "filename": "ribao_2026-04-25.html",
