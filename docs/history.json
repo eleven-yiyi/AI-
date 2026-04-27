@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年04月27日",
+    "slug": "2026-04-27",
+    "filename": "ribao_2026-04-27.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "DeepSeek-V4正式发布：百万级上下文、近SOTA性能、1/6成本",
+      "Anthropic承认Claude性能下降源于系统‘过度防护’与配置错误",
+      "85%企业已试点AI智能体，但仅5%敢投入生产环境"
+    ]
+  },
+  {
     "date": "2026年04月26日",
     "slug": "2026-04-26",
     "filename": "ribao_2026-04-26.html",
