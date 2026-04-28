@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年04月28日",
+    "slug": "2026-04-28",
+    "filename": "ribao_2026-04-28.html",
+    "news_count": 5,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "微软与OpenAI终止独家合作，OpenAI可自由接入AWS与Google Cloud",
+      "DeepSeek发布V4开源大模型，支持百万级上下文与强代理能力",
+      "David Silver创立Ineffable Intelligence，融资11亿美元研发无数据自学习AI"
+    ]
+  },
+  {
     "date": "2026年04月27日",
     "slug": "2026-04-27",
     "filename": "ribao_2026-04-27.html",
