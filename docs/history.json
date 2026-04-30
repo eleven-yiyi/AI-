@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年04月30日",
+    "slug": "2026-04-30",
+    "filename": "ribao_2026-04-30.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "OpenAI模型正式登陆AWS Bedrock，终结云厂商独家合作时代",
+      "Musk与Altman就OpenAI性质展开历史性庭审，核心争议为‘非营利初心’是否被违背",
+      "Anthropic拟以9000亿美元估值融资500亿美元，创AI公司融资新纪录"
+    ]
+  },
+  {
     "date": "2026年04月29日",
     "slug": "2026-04-29",
     "filename": "ribao_2026-04-29.html",
