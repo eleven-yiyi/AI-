@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年05月01日",
+    "slug": "2026-05-01",
+    "filename": "ribao_2026-05-01.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "阿里巴巴 Metis 代理将冗余工具调用从98%降至2%，准确率反升",
+      "OpenAI与Musk就公司性质对簿公堂：营利性存续成焦点",
+      "Anthropic估值或超900亿美元，新一轮融资即将落地"
+    ]
+  },
+  {
     "date": "2026年04月30日",
     "slug": "2026-04-30",
     "filename": "ribao_2026-04-30.html",
