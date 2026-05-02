@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年05月02日",
+    "slug": "2026-05-02",
+    "filename": "ribao_2026-05-02.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Salesforce发布Agentforce Operations，专治企业AI工作流断裂",
+      "Musk在OpenAI诉讼中承认xAI使用OpenAI模型蒸馏训练Grok",
+      "Alibaba Metis智能裁决代理将冗余工具调用从98%降至2%"
+    ]
+  },
+  {
     "date": "2026年05月01日",
     "slug": "2026-05-01",
     "filename": "ribao_2026-05-01.html",
