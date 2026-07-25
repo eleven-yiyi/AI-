@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年07月25日",
+    "slug": "2026-07-25",
+    "filename": "ribao_2026-07-25.html",
+    "news_count": 6,
+    "knowledge_count": 4,
+    "tools_count": 4,
+    "headlines": [
+      "企业AI代理治理严重滞后：先部署后补控成普遍现象",
+      "Anthropic发布Claude Opus 5：成本减半、能力逼近Fable 5",
+      "微软发布MAI-Image-2.5-Pro与MAI-Voice-2-Flash，称成本较OpenAI低89%"
+    ]
+  },
+  {
     "date": "2026年07月24日",
     "slug": "2026-07-24",
     "filename": "ribao_2026-07-24.html",
