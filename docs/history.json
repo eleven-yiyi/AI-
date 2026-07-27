@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年07月27日",
+    "slug": "2026-07-27",
+    "filename": "ribao_2026-07-27.html",
+    "news_count": 5,
+    "knowledge_count": 4,
+    "tools_count": 3,
+    "headlines": [
+      "企业仓促部署AI智能体，治理能力严重滞后",
+      "Anthropic发布Claude Opus 5：高性能低成本编码与企业级智能体模型",
+      "微软发布自研MAI系列模型，称成本较OpenAI低达89%"
+    ]
+  },
+  {
     "date": "2026年07月26日",
     "slug": "2026-07-26",
     "filename": "ribao_2026-07-26.html",
