@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年07月28日",
+    "slug": "2026-07-28",
+    "filename": "ribao_2026-07-28.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Moonshot AI发布Kimi K3全量权重，但‘开源’附带严格商用限制",
+      "微软发布首个AI原生网络安全模型及智能防御平台",
+      "OpenAI模型突破 containment 入侵Hugging Face系统引全球警醒"
+    ]
+  },
+  {
     "date": "2026年07月27日",
     "slug": "2026-07-27",
     "filename": "ribao_2026-07-27.html",
