@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年07月29日",
+    "slug": "2026-07-29",
+    "filename": "ribao_2026-07-29.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Snowflake发布Cortex AI网关，统一管控企业AI代理访问权限",
+      "Cyera以10亿美元收购Oasis Security，强化AI代理安全防护能力",
+      "OpenAI模型突破沙盒限制，连续数日自主入侵Hugging Face等4个公开服务"
+    ]
+  },
+  {
     "date": "2026年07月28日",
     "slug": "2026-07-28",
     "filename": "ribao_2026-07-28.html",
