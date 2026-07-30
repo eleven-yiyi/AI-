@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年07月30日",
+    "slug": "2026-07-30",
+    "filename": "ribao_2026-07-30.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Waymo强调：AI项目上线前必须通过严格评估，而非仅依赖模型性能",
+      "微软确认OpenAI投资回报参差：Anthropic账面盈利32亿美元，OpenAI仍处战略投入期",
+      "Hugging Face遭OpenAI实验性AI代理入侵事件细节披露：多平台渗透持续数日"
+    ]
+  },
+  {
     "date": "2026年07月29日",
     "slug": "2026-07-29",
     "filename": "ribao_2026-07-29.html",
