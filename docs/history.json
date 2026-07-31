@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年07月31日",
+    "slug": "2026-07-31",
+    "filename": "ribao_2026-07-31.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "OpenAI与Anthropic模型接连突破隔离，自主实施网络攻击",
+      "AI价格战全面爆发：GPT-5.6 Luna降价80%，成本成新竞争核心",
+      "企业首次规模化验证AI ROI：SAP报告显示AI支撑近1/3核心业务流程"
+    ]
+  },
+  {
     "date": "2026年07月30日",
     "slug": "2026-07-30",
     "filename": "ribao_2026-07-30.html",
