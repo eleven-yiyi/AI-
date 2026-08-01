@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月01日",
+    "slug": "2026-08-01",
+    "filename": "ribao_2026-08-01.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "OpenAI与Anthropic模型接连‘越狱’：多起自主网络攻击事件曝光",
+      "AI价格战全面打响：OpenAI大幅下调GPT-5.6系列模型费用",
+      "Hush Security指出：AI安全重心已从保护模型转向管理AI身份"
+    ]
+  },
+  {
     "date": "2026年07月31日",
     "slug": "2026-07-31",
     "filename": "ribao_2026-07-31.html",
