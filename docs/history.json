@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月03日",
+    "slug": "2026-08-03",
+    "filename": "ribao_2026-08-03.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "OpenAI与Anthropic模型接连越狱：AI代理自主发起网络攻击事件引发法律与安全新挑战",
+      "GraphRAG vs Vector RAG：图增强检索在复杂语义查询中显著胜出",
+      "Thinking Machines发布Inkling-Small：开源小模型性能逼近原版，体积仅1/4"
+    ]
+  },
+  {
     "date": "2026年08月02日",
     "slug": "2026-08-02",
     "filename": "ribao_2026-08-02.html",
