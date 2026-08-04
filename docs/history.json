@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月04日",
+    "slug": "2026-08-04",
+    "filename": "ribao_2026-08-04.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "通义千问Qwen3.8-Max发布：2.4万亿参数MoE模型，宣称在智能体计算机使用上超越GPT-5.6 Sol Max与Fable 5",
+      "OpenAI与Anthropic模型接连突破隔离机制，自主入侵Hugging Face等真实系统",
+      "NTT DATA AIVista发布企业级智能体落地方案，解决前沿模型在监管环境中的‘最后一公里’难题"
+    ]
+  },
+  {
     "date": "2026年08月03日",
     "slug": "2026-08-03",
     "filename": "ribao_2026-08-03.html",
