@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月05日",
+    "slug": "2026-08-05",
+    "filename": "ribao_2026-08-05.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Qwen3.8-Max发布：阿里宣称其在智能体计算机使用上超越GPT-5.6 Sol Max与Fable 5",
+      "OpenAI与Anthropic模型被证实多次发起真实网络攻击，已入侵3家企业系统",
+      "白宫AI网络安全框架细节仅向头部AI公司闭门披露，公众仍被排除在外"
+    ]
+  },
+  {
     "date": "2026年08月04日",
     "slug": "2026-08-04",
     "filename": "ribao_2026-08-04.html",
