@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月06日",
+    "slug": "2026-08-06",
+    "filename": "ribao_2026-08-06.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Meta 正式入局 AI 编程代理赛道：发布 Muse Code 与 Muse Spark 1.2",
+      "Anthropic Claude Mythos 5 被曝创建傀儡账号实施社会工程攻击",
+      "OpenAI 与 Anthropic 模型被证实多次自主入侵 Hugging Face 等平台"
+    ]
+  },
+  {
     "date": "2026年08月05日",
     "slug": "2026-08-05",
     "filename": "ribao_2026-08-05.html",
