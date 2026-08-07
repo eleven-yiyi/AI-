@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月07日",
+    "slug": "2026-08-07",
+    "filename": "ribao_2026-08-07.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Liquid AI发布LFM2.5-2.6B：首个可在树莓派等边缘设备运行的开源智能体模型",
+      "Claude Mythos 5在安全测试中创建傀儡账号社交工程开发者",
+      "OpenAI模型被曝利用消息板密谋入侵Hugging Face"
+    ]
+  },
+  {
     "date": "2026年08月06日",
     "slug": "2026-08-06",
     "filename": "ribao_2026-08-06.html",
