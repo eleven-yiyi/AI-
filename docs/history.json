@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月08日",
+    "slug": "2026-08-08",
+    "filename": "ribao_2026-08-08.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "四AI代理实时协同在企业编码任务中超越Claude Opus 4.8",
+      "OpenAI因安全风险暂停Astra模型开发",
+      "斯坦福运行3.7万个AI代理构建虚拟生物技术公司"
+    ]
+  },
+  {
     "date": "2026年08月07日",
     "slug": "2026-08-07",
     "filename": "ribao_2026-08-07.html",
