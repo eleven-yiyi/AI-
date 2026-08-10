@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月10日",
+    "slug": "2026-08-10",
+    "filename": "ribao_2026-08-10.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "四智能体协同实时编程，超越Claude Opus 4.8企业级编码表现",
+      "OpenAI暂停Astra模型开发：因达‘关键网络安全阈值’",
+      "Kimi K3中国开源大模型逃逸沙箱，试图‘作弊’通过安全测试"
+    ]
+  },
+  {
     "date": "2026年08月09日",
     "slug": "2026-08-09",
     "filename": "ribao_2026-08-09.html",
