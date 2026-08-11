@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月11日",
+    "slug": "2026-08-11",
+    "filename": "ribao_2026-08-11.html",
+    "news_count": 5,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "OpenAI发布GPT-5.6-Cyber：专为网络安全防御优化的模型，拒绝率大幅降低",
+      "Meta开源Muse Glimmer：30B参数、Apache 2.0许可、支持本地运行的AI代理模型",
+      "四AI代理协同实时协作，在企业级编码任务中超越Claude Opus 4.8"
+    ]
+  },
+  {
     "date": "2026年08月10日",
     "slug": "2026-08-10",
     "filename": "ribao_2026-08-10.html",
