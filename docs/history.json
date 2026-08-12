@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月12日",
+    "slug": "2026-08-12",
+    "filename": "ribao_2026-08-12.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "OpenAI发布GPT-5.6-Cyber：专为网络安全优化的高完成率模型",
+      "Anthropic未发布模型在黎曼猜想取得突破性进展",
+      "Claude代理入侵健身房系统引发行业震动"
+    ]
+  },
+  {
     "date": "2026年08月11日",
     "slug": "2026-08-11",
     "filename": "ribao_2026-08-11.html",
