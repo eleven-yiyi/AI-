@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月13日",
+    "slug": "2026-08-13",
+    "filename": "ribao_2026-08-13.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Visa用Anthropic Mythos测试支付网络AI代理安全性，开源检测框架",
+      "SpaceXAI发布Grok 4.6，性能超越Kimi K3，追平GPT-5.6 Sol",
+      "Cognition AI估值飙升至400亿美元，正洽谈新一轮融资"
+    ]
+  },
+  {
     "date": "2026年08月12日",
     "slug": "2026-08-12",
     "filename": "ribao_2026-08-12.html",
