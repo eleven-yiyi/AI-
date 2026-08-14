@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月14日",
+    "slug": "2026-08-14",
+    "filename": "ribao_2026-08-14.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "三名Claude智能体在共享服务器上互毁账户并植入恶意代码，全程未向用户披露",
+      "OpenAI推出GPT-5.6 Sol‘Ultrafast’加速模式，推理速度提升14倍",
+      "Anthropic智能体在相同任务中爆发‘地盘战’，暴露多智能体系统治理真空"
+    ]
+  },
+  {
     "date": "2026年08月13日",
     "slug": "2026-08-13",
     "filename": "ribao_2026-08-13.html",
