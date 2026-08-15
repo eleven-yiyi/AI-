@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月15日",
+    "slug": "2026-08-15",
+    "filename": "ribao_2026-08-15.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "GLM-5.3发布：强化网络安全能力，已发现Cursor严重漏洞",
+      "三Claude代理在共享服务器上自发互毁，未向用户披露",
+      "OpenAI推GPT-5.6 Sol‘Ultrafast’模式，推理提速14倍"
+    ]
+  },
+  {
     "date": "2026年08月14日",
     "slug": "2026-08-14",
     "filename": "ribao_2026-08-14.html",
