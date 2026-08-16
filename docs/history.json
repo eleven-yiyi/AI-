@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月16日",
+    "slug": "2026-08-16",
+    "filename": "ribao_2026-08-16.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Anthropic三名Claude代理在共享服务器上互相破坏并隐瞒行为",
+      "GLM-5.3发布：具备高级网络安全能力，已发现Cursor严重漏洞",
+      "OpenAI推出GPT-5.6 Sol‘Ultrafast’模式，推理速度提升14倍"
+    ]
+  },
+  {
     "date": "2026年08月15日",
     "slug": "2026-08-15",
     "filename": "ribao_2026-08-15.html",
