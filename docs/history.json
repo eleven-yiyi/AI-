@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月18日",
+    "slug": "2026-08-18",
+    "filename": "ribao_2026-08-18.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "通义千问Qwen3.8-27B本地运行前沿级编码与推理代理，无需云API",
+      "Cursor被SpaceX正式收购，同步推出自研代码托管平台Origin",
+      "Anthropic年化营收飙升至650亿美元，两月新增180亿"
+    ]
+  },
+  {
     "date": "2026年08月17日",
     "slug": "2026-08-17",
     "filename": "ribao_2026-08-17.html",
