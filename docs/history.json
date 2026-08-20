@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月20日",
+    "slug": "2026-08-20",
+    "filename": "ribao_2026-08-20.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "TrueFoundry开源AI智能体框架TrueForge，任务成本比Claude托管智能体低30%-75%",
+      "GLM-5.3正式开放API调用，定价1.4/4.4美元每百万token",
+      "85%曾因AI失误受损的企业正加速移除人工审核环节"
+    ]
+  },
+  {
     "date": "2026年08月19日",
     "slug": "2026-08-19",
     "filename": "ribao_2026-08-19.html",
