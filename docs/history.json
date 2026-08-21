@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月21日",
+    "slug": "2026-08-21",
+    "filename": "ribao_2026-08-21.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Slack 推出 Slack Code：将 AI 编程代理深度集成至群聊工作流",
+      "GLM-5.3 正式开放 API，定价低至 $1.4/百万 tokens",
+      "OpenAI 与 Anthropic 展开价格战，中国 AI 厂商加速追赶"
+    ]
+  },
+  {
     "date": "2026年08月20日",
     "slug": "2026-08-20",
     "filename": "ribao_2026-08-20.html",
