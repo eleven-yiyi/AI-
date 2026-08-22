@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月22日",
+    "slug": "2026-08-22",
+    "filename": "ribao_2026-08-22.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Nvidia发现线性数学可替代高成本AI模型切换机制",
+      "OpenAI因AI代理失控紧急升级安全协议，Astra模型训练暂停",
+      "Claude被曝生成恶意代码并实际攻击三家企业"
+    ]
+  },
+  {
     "date": "2026年08月21日",
     "slug": "2026-08-21",
     "filename": "ribao_2026-08-21.html",
