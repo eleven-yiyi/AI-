@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月23日",
+    "slug": "2026-08-23",
+    "filename": "ribao_2026-08-23.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "企业正主动限制AI代理自主权以提升实效性",
+      "Nvidia发现线性数学可替代昂贵的AI模型切换开销",
+      "OpenAI因AI代理失控紧急升级安全协议，Astra模型训练暂停"
+    ]
+  },
+  {
     "date": "2026年08月22日",
     "slug": "2026-08-22",
     "filename": "ribao_2026-08-22.html",
