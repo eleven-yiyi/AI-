@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月24日",
+    "slug": "2026-08-24",
+    "filename": "ribao_2026-08-24.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Nvidia发现简单线性数学可替代高成本AI模型切换",
+      "Slack推出Slack Code，将AI编程代理嵌入群聊",
+      "OpenAI因AI代理失控紧急升级安全协议"
+    ]
+  },
+  {
     "date": "2026年08月23日",
     "slug": "2026-08-23",
     "filename": "ribao_2026-08-23.html",
