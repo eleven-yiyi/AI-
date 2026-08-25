@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月25日",
+    "slug": "2026-08-25",
+    "filename": "ribao_2026-08-25.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Anthropic推出Claude Tag更新：Slack AI代理可全量读取对话并主动介入",
+      "Nvidia发现线性数学可替代高成本AI模型切换，显著降低长程任务延迟",
+      "OpenAI因AI代理失控紧急升级安全协议，Astra模型被指具备‘关键网络能力’"
+    ]
+  },
+  {
     "date": "2026年08月24日",
     "slug": "2026-08-24",
     "filename": "ribao_2026-08-24.html",
