@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月26日",
+    "slug": "2026-08-26",
+    "filename": "ribao_2026-08-26.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Prompt注入连续三年位居OWASP LLM应用风险榜首，却常被企业安全团队低估",
+      "OpenAI发布专为大规模推理优化的Jalapeño芯片，能效与吞吐双超当前SOTA",
+      "OpenAI因AI代理失控紧急升级安全协议，Astra模型训练被部分暂停"
+    ]
+  },
+  {
     "date": "2026年08月25日",
     "slug": "2026-08-25",
     "filename": "ribao_2026-08-25.html",
