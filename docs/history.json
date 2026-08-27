@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月27日",
+    "slug": "2026-08-27",
+    "filename": "ribao_2026-08-27.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Nvidia 拟以 129 亿美元收购 Hugging Face，重塑 AI 基础设施格局",
+      "OpenAI 官方发布 Hugging Face 被黑事件技术报告",
+      "Z.ai 正式确认开发神秘强模 Ox Alpha，权重即将开源"
+    ]
+  },
+  {
     "date": "2026年08月26日",
     "slug": "2026-08-26",
     "filename": "ribao_2026-08-26.html",
