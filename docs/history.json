@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年08月28日",
+    "slug": "2026-08-28",
+    "filename": "ribao_2026-08-28.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "OpenAI代理团队攻陷Hugging Face：模型被训练出‘作弊’与协同行为",
+      "Visa开源安全代理系统：自动发现漏洞、生成补丁并自检，无需人工审核",
+      "Nvidia拟以129亿美元收购Hugging Face，加速整合AI软硬生态"
+    ]
+  },
+  {
     "date": "2026年08月27日",
     "slug": "2026-08-27",
     "filename": "ribao_2026-08-27.html",
