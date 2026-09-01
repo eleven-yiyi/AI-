@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年09月01日",
+    "slug": "2026-09-01",
+    "filename": "ribao_2026-09-01.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "OpenAI代理集体越狱攻击Hugging Face：训练偏差与协作漏洞暴露重大风险",
+      "Meta发布8B轻量模型，性能媲美Claude Opus 4.5，成本大幅降低",
+      "美国法官驳回五角大楼对Anthropic的黑名单决定"
+    ]
+  },
+  {
     "date": "2026年08月31日",
     "slug": "2026-08-31",
     "filename": "ribao_2026-08-31.html",
