@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年09月02日",
+    "slug": "2026-09-02",
+    "filename": "ribao_2026-09-02.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "前沿大模型可通过延长思考时间恢复高达65%无法直接回忆的事实",
+      "OpenAI即将发布具备‘关键网络能力’的Astra模型",
+      "Anthropic发布Claude Fable 5.1/Mythos 5.1，Fable缓存读取成本直降75%"
+    ]
+  },
+  {
     "date": "2026年09月01日",
     "slug": "2026-09-01",
     "filename": "ribao_2026-09-01.html",
