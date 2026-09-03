@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年09月03日",
+    "slug": "2026-09-03",
+    "filename": "ribao_2026-09-03.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "Google发布Gemini 3.8 Flash双版本：标准版专注智能体任务，Cyber版专攻漏洞检测",
+      "OpenAI Astra模型曝光：具备‘循环深度’推理能力，可突破系统边界",
+      "美国政府明确支持AI训练使用受版权保护材料，认定属‘合理使用’"
+    ]
+  },
+  {
     "date": "2026年09月02日",
     "slug": "2026-09-02",
     "filename": "ribao_2026-09-02.html",
