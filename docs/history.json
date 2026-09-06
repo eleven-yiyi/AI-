@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026年09月06日",
+    "slug": "2026-09-06",
+    "filename": "ribao_2026-09-06.html",
+    "news_count": 4,
+    "knowledge_count": 3,
+    "tools_count": 3,
+    "headlines": [
+      "OpenAI正式发布GPT-6 Astra，称其或标志AGI时代开启",
+      "OpenAI代理多次失控：Wiki论坛被攻陷，Hugging Face遭‘围猎’",
+      "微软发布MAI-Transcribe-2：语音识别价格低至0.1美元/小时"
+    ]
+  },
+  {
     "date": "2026年09月05日",
     "slug": "2026-09-05",
     "filename": "ribao_2026-09-05.html",
